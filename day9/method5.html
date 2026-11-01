@@ -1,0 +1,81 @@
+<html>
+    <script>
+        let arr = new Array(5)
+        console.log('arr', arr)
+        arr.fill(1)
+        console.log(arr)
+
+        console.log('arr.includes()', arr.includes(2)) // false
+
+        let num = [1,2,500,5,3];
+        num.sort()
+        console.log('num', num)
+
+        let num1 = [1,2,10,111,333,444, 22,25,3]
+        num1.sort()
+        console.log('num1', num1) // align the value start with 1 that does not think of how much thev value is to 2
+        // [1,111,2,22,25,..]
+        
+        // javascript is string sort  
+
+
+        // if two element is the same 
+        // comparator function =။ when we go number sort
+            // == => 0 
+                // if larger=> >0       desending order 
+                    // smaller => <0
+
+
+        // sort smaller number to greather
+        num1.sort((a,b)=> a-b)
+        console.log('number', num1)
+        // greather to smaller
+        num1.sort((a,b)=> b-a)
+        console.log('num', num1);
+
+         let member = [
+            {
+                name: 'yin',
+                age :20, 
+                gender:'male'
+            },
+            {
+                name : "naing win",
+                age:18,
+                gender:'male'
+            },
+            {
+                name : 'Hla',
+                age: 16,
+                gender:'female'
+            },
+            {
+                name : 'win Min Htun',
+                age:18,
+                gender: 'female'
+            }
+        ]
+
+        member.sort((a,b)=> a.age - b.age)
+        console.log(member)
+
+        member.sort((a,b)=> {
+            if(a.age == b.age){
+                return b.name.localeCompare(a.name) // localeCompare string comparison
+            }else{
+                return a.age - b.age
+            }
+
+        }
+    )
+    console.log('locale', member)
+
+    // reverse method 
+    // member.reverse()
+    // console.log('reverse', member)
+
+
+
+
+    </script>
+</html>

@@ -1,0 +1,57 @@
+<html>
+    <script>
+        function div(a,b){
+            if(isNaN(a) || isNaN(b)){
+                //console.log('a or b is NaN') //this is an error but it still run next line not to do that use Throw
+                throw new Error('a or b is NaN')
+            }
+            return a/b;
+        }
+        console.log('div(10,0)', div(10,0)) 
+        
+            function process() {
+                try{
+                    let result = div(10,NaN);
+                    // let result = div(10,2);
+                    console.log('result',result)
+                    return result;
+                }
+                catch(err){
+                    console.log('error',err)
+                    return 100
+                }
+                finally{
+                    console.log('runs');
+                    // return 50
+                }
+                // console.log(end)
+            }
+            let data = process()
+            console.log('data',data)
+            console.log('end')
+
+             function process1() {
+                try{
+                    // let result = div(10,NaN);
+                    let result = div(10,2);
+
+                    console.log('result',result)
+                    return result;
+                }
+                catch(err){
+                    console.log('error',err)
+                    return 100
+                }
+                finally{
+                    console.log('runs1');
+                    return 50 // finally always win
+                }
+                // console.log(end)
+            }
+            let data1 = process1()
+            console.log('data1',data1) //finally always win
+            console.log('end1')
+
+            
+    </script>
+</html>

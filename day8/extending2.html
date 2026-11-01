@@ -1,0 +1,60 @@
+<html>
+    <script>
+        // copy object data to another object 
+        let target = {
+            x  : 10
+        }
+        console.log(target)
+
+        let source = {
+            y : 20
+        }
+        // object.keys => get own property name 
+        for(let key of Object.keys(source)){ // use Object.keys()
+            target[key] = source[key] // target[key] = y, source[key] / source[y] = 20 => y= 20
+        }
+
+        console.log('target',target) // 10,20
+        console.log('source',source) // 20
+
+        // use assign instead of doing like that 
+        let a = {
+            value : 30
+        }
+
+        let b = {
+            value2 : 40
+        }
+        console.log('b',b)
+
+
+        let c = Object.assign(b,a) //a value to b to c
+        console.log('a',a) // 30
+        console.log('b',b) // 30,40
+        console.log('c',c) // 30,40
+        // b.value = 50
+        // console.log('av',a)
+        // console.log("ab",b)
+        // console.log('ac',c)
+
+        // spread operator
+        let d = {
+            dvalue : 1,
+            code : 101
+        }
+        let e = {
+            evalue : 2
+        }
+        let f = {...e,...d} //
+        //do not effect other object d and e
+        console.log('d',d) //1,101
+        console.log('e',e) //2
+        console.log('f',f) //1,101,2
+
+        let arr = [1,2,3]
+        let arr1 = [...arr,4]
+        console.log(arr1)
+
+
+    </script>
+</html>

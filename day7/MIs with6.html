@@ -1,0 +1,45 @@
+<html>
+    <script>
+        // Miscellaneous statement 
+        //with, debugger and use strict 
+
+
+        // shouldn't use 
+
+       // debugger // debugger shouldn't use//if use ,use on top
+       // 'use strict' // use on top
+        let obj  = {
+            name : 'John',
+            age : 34,
+            address : ''
+        }
+        data = 4; //can't use undeclared variable and 'with' in strict mode
+        console.log('data',data)
+
+       /* with(obj){
+            name  = 'smith',
+            address = 'somewhere'
+            console.log("with")
+        }
+            */
+        console.log('obj', obj)
+
+
+        function mode(){
+            console.log('this', this) //in non strict mode this is for window but in strict mode this is undefined
+        }
+        mode()
+
+        top = 5
+        console.log('top == 5', top == 5) //false => top is for window and read only 
+                                         // if use strict mode, it will show error directly 
+        eval('var item = 6')
+        console.log('item',item) //can't use in strict mode
+
+        function arg(){
+            console.log('argument',arguments)
+        }
+        arg('first','second')
+
+    </script>
+</html>

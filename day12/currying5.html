@@ -1,0 +1,33 @@
+<html>
+    <script src="./lib.js"></script>
+    <script>
+        function one(x){
+            return x +1 
+        }
+        function two(x,y){
+            return x + y 
+        }
+        newone =pipe(two,one)
+        console.log('newone', newone(2)) //NaN => we have to give two arguments but can't do here
+                                        // to fix this problem use curry method 
+    
+
+        // to compose multiple parameter use curry method
+        // curry grow from the person name Haskell Curry
+
+        function three(x){
+            return function(y){
+                return x + y
+            }
+        }
+        console.log('three', three(2)) // partial application => 2 => x value // that does not give full parameter (parameter အပြည့် မပေးဘဲ တစ်ပိုင်းတစ်စပေး)
+        newtwo = pipe(three(2),one)
+        console.log('newtwo',newtwo(2))
+
+        function addtwo(x,y){
+            return x+y
+        }
+        let newcurry = curry(addtwo)
+        console.log('newcurry(1)',newcurry(1), 'newcurry(2)',newcurry(2)(2))
+    </script>
+</html>

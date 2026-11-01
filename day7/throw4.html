@@ -1,0 +1,30 @@
+<html>
+    <script>
+        function process(a,b){
+            if(isNaN(a) || isNaN(b)){
+                //console.log('a or b is NaN') //this is an error but it still run next line not to do that use Throw
+                throw new Error('a or b is NaN')
+            }
+            return a/b;
+        }
+        console.log('process(10,0)', process(10,0)) //infinity
+       // console.log('process(0,NaN)', process(0/NaN)) // NaN
+        /*let result = process(0/NaN)
+        console.log('result',result)
+        */
+        // we can check one of the operand is NaN when we use / 
+
+        // to catch error 
+        try{
+            let result = process(0/NaN);
+            console.log('result',result)
+        }
+        catch(err){
+            console.log('Error',err)
+        }
+        finally{
+            console.log('still runs even it got error or not')
+        }
+        console.log('end')
+    </script>
+</html>

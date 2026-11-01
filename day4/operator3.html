@@ -1,0 +1,87 @@
+<html>
+    <script>
+        //operand
+
+        let a = 1;
+        a++ //side effect
+        // number of operand // 
+        // ++ N => 1 => need only one value
+        //-- N=> 1
+
+        let  b = a + 1 ; //no side effect
+        //number of operand 
+        //+/- N => 2 // need two valu
+        console.log(b) // 3
+
+        // Types => L value and R value that depend on assignment
+        let c = 1
+        //c=> l, 1=> R
+        // variable (L) = literal /constant (R)
+
+
+        // Precedence operator 
+            console.log(10+2*6/3%3-1)
+            // 2*6 => 12 / 12/3 =>4 / 4%3 => 1 / 10+1 => 11 / 11=1 => 10
+            // **-> *-/-%=> +/-
+            // first work operator  high precedant to -> low precedant
+
+        // operator difference => precedence
+        // same precedence => associativity
+        //+ - L to R
+        console.log(10+'1'+2*4) //1018
+
+        let x = 20-(2-4);
+        console.log(x) 
+        console.log("false *1",false*1) // 0 * 1 => 0
+        console.log("true *1", true * 1)
+        console.log("'true'*1","true" *1) //NaN
+        console.log('undefined * 1',undefined*1) //NaN
+        console.log('null*1',null*1) //0
+        console.log('NaN*1',NaN*1) //NaN
+        console.log("'' *1 ", ""*1) // NaN
+
+        let e = 2
+        console.log(-e)
+        console.log(e)
+
+        let o = -4;
+        console.log('-o',-o)
+        console.log('+o',+o)
+
+        // pre increment and post increament
+        let g = 10;
+        let h= g++ 
+        console.log("g",g) //11
+        console.log("h",h) //10
+
+        let i = 10
+        i++ //post
+        let j = i
+        console.log('i', i) //11
+        console.log('j', j) //11
+
+        let ii = 10
+        let jj = ++ii //pre
+        console.log('ii',ii) //11
+        console.log('jj',jj) //11
+
+         jj = ii++ ;
+        console.log("II",ii) //12
+        console.log("JJ",jj) //11
+
+
+        let obj  = {
+            valueOf(){
+                return "100"
+            }
+        }
+        console.log('obj++',obj++) // => change string 100 to number and increase 1 => answer 100
+        console.log('obj',obj) /// 101
+
+
+
+
+
+
+    </script>
+</html>

@@ -1,0 +1,34 @@
+<html>
+    <script>
+        /*
+            OR
+            0 0 = 0
+            0 1 = 1
+
+            1 0 = 1
+            1 1 = 1
+        
+            if LHS falsy
+                return RHS
+            else if LHS truthy
+                return LHS
+        */
+       console.log('false || false', false || false)
+       console.log('false || true', false || true)
+       console.log('true || false', true || false)
+       console.log('true || true ', true || true)
+
+       console.log('')
+       console.log("null || false", null || false) // false
+       console.log('undefined || "false" ', undefined || 'false') // ansewer string false not boolean false
+       console.log('{}|| undefined', {}||undefined) //{}
+
+     //LOgical operator !
+    //   1=> 0
+    //   0=> 1
+
+    console.log("!{}",!{}) // false => in real {} is truthy value
+    console.log("!''",!"") // true => in real "" is falsy value
+
+    </script>
+</html>

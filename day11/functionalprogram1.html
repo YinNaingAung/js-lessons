@@ -1,0 +1,37 @@
+<html>
+    <script>
+        // functional programming 
+        function hello(){
+            console.log('hello world')
+        }
+        hello()
+
+        function num(x,y){
+             name = 'aung';
+            console.log(`${this.name}`)
+            return x + y
+        }
+        let result = num (1,2)
+        console.log('result', result)
+
+        // arrow function 
+        // let arr = (x,y)=> x+y // single line
+        let arr =(x,y)=>{
+            // name = yin 
+            // console.log(`name ${this.name}`)
+            return x+y // for multiple line
+        }
+        let result1 = arr(1,2)
+        console.log('result1', result1)  // can not use this keyword in arrow function and
+                                        // can not use arrow fun in object
+
+        let arrow = ()=>{ name: 'yin'} //{} means for multiple line
+        console.log("arrow", arrow()) // undefined
+
+        let arrows = ()=> ({name:'yin'}) //in here {} means the value is object
+        console.log('arrows', arrows())
+
+        
+
+    </script>
+</html>

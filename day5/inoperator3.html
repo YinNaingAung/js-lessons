@@ -1,0 +1,30 @@
+<html>
+    <script>
+        // to chack property is in obj or not / doesnot care property value
+        let obj = {
+            name : 'yin',
+            age : '20'
+        }
+        console.log("name in obj", 'name' in obj) //true
+        console.log("name1 in obj", 'name1' in obj) //false
+        console.log("toString in obj", 'toString' in obj) //true //toString already have in Object flow down from parent(inherentence)
+
+        // instanceof =>  to check the value is flow down from where
+                        // to check inheritance
+        let date = new Date();
+        console.log('date instanceOf Date',date instanceof Date) //true
+        console.log('date instanceOf Obj ', date instanceof Object) //true
+        console.log('obj instanceOf date', obj instanceof Date) //false
+        console.log("obj instanceOf obj", obj instanceof Object) //true => all object are flown down from parent object and everything is object in js
+
+        let one = 1
+        console.log('one instanceof obj',one instanceof Object)
+
+        let arr = [1,3,4]
+        console.log('arr instanceof array', arr instanceof Array)
+        console.log('arr instanceof object', arr instanceof Object)
+
+
+
+    </script>
+</html>

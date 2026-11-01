@@ -1,0 +1,28 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+    <script>
+        // Everything is function in functional programming 
+        //we can compose even if it is function (function မှ)
+
+        // (a → Boolean) → [a] → Boolean
+        // all
+        const equals3 = R.equals(3);
+        R.all(equals3)([3, 3, 3, 3]); //=> true
+        R.all(equals3)([3, 3, 1, 3]); //=> false
+        //every input is in the right hand side
+
+        // count
+        // (a → Boolean) → [a] → Number
+        const even = x => x % 2 == 0;
+        R.count(even, [1, 2, 3, 4, 5]); // => 2
+
+
+        // identity Function 
+        // a → a
+        console.log('identity', R.identity(1)); //=> 1
+          // why do we use identity function?
+        // so sometimes we need to pass a function as an argument but we don't want to change the value, so we can use identity function.
+        // sometimes we cannot compose some primitive value, so we can use identity function to compose it.
+
+    </script>
+</html>

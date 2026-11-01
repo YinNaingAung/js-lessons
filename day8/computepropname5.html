@@ -1,0 +1,67 @@
+<html>
+    <script>
+        // dynamically variable as property 
+        let obj = {
+            name :'John',
+            age : 23,
+            pocesses : ['house','car']
+        }
+        let destination = 'address'
+        obj[destination] = "YGN"
+        obj.name = "Smith"
+        obj.status = 'single'
+        console.log('obj',obj);
+        
+
+        // spread method or clone 
+        let place = {
+            address : 'somewhere'
+        }
+
+        // shallow clone 
+        let info = {...obj, ...place} //same condition with=>  let c = Object.assign(b,a) //a value to b to c
+                                    // when we change the value c ,the b value will change auto 
+        console.log('info',info)
+        info.pocesses.push('yard')
+        console.log('obj', obj)  // obj = info => share data if not we don't like the way it is use Deep clone method
+        console.log('info', info)
+
+        // Deep clone => copy sematic
+        let deep = JSON.parse(JSON.stringify(obj))
+        deep.pocesses.push('company');
+        console.log('obj',obj)
+        console.log('deep',deep)
+
+
+        // copy sematic  in array using spread
+        let a = [1,2]
+        let b = [3,4]
+        let ab = [...a, ...b]
+        console.log('ab',ab) // 1,2,3,4
+        ab.push(5)
+        console.log('ab',ab); //1,2,3,4,5
+        console.log('a',a)  //1,2
+        console.log('b',b) //3,4
+        ab[0]= 10
+        console.log('ab',ab) //10,2,3,4,5
+        console.log('a',a) //1,2
+        console.log('b',b) //3,4
+
+        // but in Object it effect to parent // refercnce sematic
+        let c = {
+            item : [10,20]
+        }
+        console.log('c.item',c.item) // 10,20
+        let d = {...c}
+        console.log('d.item',d.item); // 10,20
+        // change d item 
+        d.item.push(30);
+        console.log('c.item',c.item) //10,20,30
+        console.log('d.item',d.item) // 10,20,30
+
+        d.item[0] = 100
+        console.log('c.item', c.item) // 100,20,30
+        console.log('d.item',d.item) // 100,20,3o
+
+    </script>
+</html>

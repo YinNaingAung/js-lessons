@@ -1,0 +1,69 @@
+<html>
+    <script>
+        let a  = 2; //10 => binary number
+        let b  = 3; //11 
+                        //change obj at runtime
+        console.log('a', a.toString(2)) // base on binary base 2
+        console.log('b', b.toString(2)) // base on binary base 2
+
+
+       /* & (and)
+        1 0 = 0
+        0 1 = 0
+        0 0 = 0
+        1 1 = 1
+       */
+//       10
+//       &
+//       11
+//       comparee=> a=1 & b=1 / a=0 & b=1 => front to to front back to back
+// answer = 10
+    
+console.log('a&b',(a&b).toString(2)) // 10
+  
+       
+      /* | (or)
+       1 0 = 1
+       0 1 = 1
+       0 0 = 0
+       1 1 = 1
+     */
+
+console.log('a|b',(a|b).toString(2)) //11
+
+       /* ^ (XOR)
+        1 0 = 1
+        0 1 = 1
+        0 0 = 0
+        1 1 = 0
+     */
+console.log('a^b',(a^b).toString(2)) //01
+
+        let c = 2
+        let d = 3
+        // 000000010
+        //   Change
+        // 111111101
+        //   front 1 sign  = minus 
+
+      /*  ~ (not) (bitwise not) tile => binary reverse  //note !(not) boolean not
+        0 => 1
+        1 => 0
+     */
+    console.log('~c',(~c).toString(2))
+
+    // shitf left /shift right
+    // >> (R) / << (l)
+    // 00000000010 => move last value to right  10 => (R => ommit) move 0 to right so 0 ommited just left 1
+    // 00000000010 => move last value to Left  10 => (L => increase) move 0 to left
+
+    let f = 2;
+    console.log(f.toString(2))
+    console.log("'f>>1'", (f>>1).toString(2)) // 1
+    console.log("'f<<1'", (f<<1).toString(2)) // 100
+
+    let g =5
+    console.log(g>>1)
+    console.log(g<<1)
+    </script>
+</html>

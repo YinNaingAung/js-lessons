@@ -1,0 +1,91 @@
+<html>
+    <script>
+        // falsy value 
+        
+        // null
+        // undefined
+        // 0
+        // NaN 
+        // empty string ("")
+        let name;
+        console.log("name", name) //undefined
+        let obj = {
+            name: 'yin'
+        }
+        console.log('age',obj.age)// undefined
+        console.log('typeOf name', typeof(name)) //undefined
+
+        let job = null
+        console.log('job',job)
+        console.log('typeof job', typeof job) //null
+
+        // Symbol 
+
+        let symName = Symbol("propname")
+        let symName2 = Symbol("propname")
+
+        console.log('symbol', symName)
+        console.log('typeof symName',typeof symName) //symbol
+
+
+        let name1 = 'Full Name'
+        let object = {
+            symName : "Yin",
+            [symName2] : "Naing",  // called variable value as property using array  []
+             [name1] : 'yinnaing'
+        }
+
+        // Object 
+        let object1 = {
+            name :"yin",
+            age:'24'
+        }
+        console.log(object1)
+        console.log(object)
+
+        console.log(object1.name)
+
+        // Global Object 
+        // window 
+        console.log("Global object - window", window)
+        // window.property 
+        console.log("window property isNaN", window.isNaN(10)); //false
+
+
+
+        // copy sematics vs reference sematics  
+
+        let a = 1;
+        let b = a; //copy semantics  => the first main variable remains the same and the second one changes itself;
+        b++
+        console.log('first variable \'a\'',a, "second variable 'b'",b)
+
+        let ab = {
+            value : 10,
+        };
+        console.log(ab)
+        //connect
+        let c = ab ;//reference semantics =i> if the second variable changes, the first main var will change, taking the second value 
+        console.log(c);
+
+       c.value++
+
+        console.log('ab value',ab.value,"c value", c.value)
+
+        let  c1= ab;
+        console.log('c1',c1);
+        console.log('ab',ab)
+
+        // seperate object  cuase I assigned the new value, the variable i set 
+        c  ={
+            value : 20
+        }
+        c.value++
+        //   this time the store value does not change 
+        console.log(c.value, ab.value)
+
+
+
+
+    </script>
+</html>

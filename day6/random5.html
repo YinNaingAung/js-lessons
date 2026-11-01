@@ -1,0 +1,29 @@
+<html>
+    <script>
+        let number = Math.random(); /// 0.number we will get the number start with decimal 0 //return between 0 and 1
+        console.log(number) 
+
+        let number1 = Math.random()*10; // num.num get the number between 0 and 10 but don't get 10
+        console.log(number1)
+
+        let number2 = Math.random()*10 +1  // num.num get the number between 0 and 10 including 10
+        console.log(number2)
+
+        // change decimal to integer 
+        let number3 = parseInt(Math.random()*10+1)
+        console.log(number3)
+
+        let input ;
+        do{
+            input = + window.prompt("enter guess number");
+            if(input > number3){
+                console.log('too high')
+            }else{
+                console.log('too low')
+            }
+        }while(input != number3)
+         console.log("you won")
+
+
+    </script>
+</html>

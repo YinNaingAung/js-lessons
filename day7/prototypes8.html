@@ -1,0 +1,96 @@
+<html>
+    <script>
+        // we can crate nested prototypes using crate 
+
+        let parent = {
+            x : 2
+        }
+        let obj = Object.create(parent); // parent(sth) is parent// use create to be parent so 
+                                        // this variable name parent(just name) is the parent of obj 
+        obj.y = 4
+        console.log('obj',obj) // y => prototypes obj = x => prototypes obj => object default property
+
+        console.log('obj.y', obj.y)
+        console.log('obj.x',obj.x) // read in real there is no x value in obj just read or lookup from it parent or nested parent and show
+        console.log('obj.x1',obj.x1) // undefined
+        
+        let obj2 = Object.create(parent);
+
+        console.log('obj',obj)
+
+        parent.x = 4
+
+        console.log('obj1.x', obj.x)
+        console.log('obj2.x', obj2.x)
+
+        obj2.x = 10; // write operation that is the left side of assignment besides
+        console.log('obj2.x', obj2.x)
+
+        console.log('obj2',obj2)
+        console.log('obj1',obj);
+        console.log('parent',parent)
+
+
+        let parent1 = {
+            item : [100]
+        }
+        let child = Object.create(parent1)
+        child.item.push(200) // read operation => this effect to parent 
+
+        console.log('parent1.item', parent1.item)
+        console.log('child.item', child.item)
+
+        child.item = [300,400]
+        console.log('child.item', child.item)
+
+        let object = {
+            name : 'John',
+            age : 23,
+            city: "Hopin"
+        }
+        console.log('object.name', object.name)
+        console.log('object.age', object['age'])
+
+        let propCity = 'city'; // Dynamic lookup when property is alive (အရှင်)
+        console.log('object.city', object[propCity])
+        
+        object.status = "single" // create new property
+        console.log('object', object)
+        
+        console.log('object.address.city', object.address?.city)
+
+        // testing property  true/false
+        console.log('name in object', 'name' in object) // true
+        console.log('addrss in object', 'address' in object) // false
+        console.log('toString in object', 'toString' in object) // true
+
+        console.log('name ownproperty', object.hasOwnProperty('name')) //true
+        console.log('address ownproperty', object.hasOwnProperty('address')) //false
+        console.log('tostring ownproperty', object.hasOwnProperty('toString'))// false
+
+        console.log('name propertyIsEnumerable', object.propertyIsEnumerable('name')) //true this will get when looping
+        console.log('name propertyIsEnumerable', object.propertyIsEnumerable('toString')) //false 
+
+        for( obj in object) {
+            console.log(' \'obj\'',obj, "'value'" , object[obj])
+        }
+
+        let info = {
+            name: 'yin',
+            age:24
+        }
+
+        let add = Object.create(info)
+        add.address = 'Yangon'
+        console.log('info',info)
+        console.log('add', add)
+
+        for(let props in add){
+            if(add.hasOwnProperty(props)){
+                console.log('props', props, 'ownproperty')
+            }
+            console.log('add',props, 'value', add[props])
+        }
+
+    </script>
+</html>

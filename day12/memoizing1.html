@@ -1,0 +1,51 @@
+<html>
+    <script>
+       /* To be memoizing function 
+            1.Cache
+                pure function same input , same outpupt
+
+        // Factorial 
+        two numbers = 12=> 21
+        2! = 2x1 = 2
+        three numbers = 123 , 132, 213, 231, 312, 321
+        3! = 3x2x1 = 6
+        */
+
+        // factories using looping method
+        //pure => there is no side effect the variable outside the function 
+                // => in local inside the function, even changing the variable, it is still pure.
+                // =>  before no Touching the outside value ; side effect  
+       function fact(n){
+        console.log('compute fact n ', n)
+        let number = 1
+        for(let i = 1; i<=n ; i++){
+             number *= i    
+        }
+         return number
+       }
+        // console.log('fact 3',fact(3))
+        console.log(fact())
+        function memonize(fn){
+            let cache = {}
+            // if(cache[n]){
+            //     return cache[n]
+            // }else{
+            //     cache[n] = fn()
+            //     return cache[n]
+            // }
+            return function(n){
+                if(!cache[n]){ // cache => pure 
+                cache[n] = fn(n)
+            }   
+            return cache[n]
+            }
+            
+        }
+        factorial = memonize(fact)
+        console.log('fact', factorial(3)) // represent for return function (n)
+        console.log('fact', factorial(2))
+
+
+        
+    </script>
+</html>

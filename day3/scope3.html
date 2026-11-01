@@ -1,0 +1,55 @@
+<html>
+    <script>
+
+        // function scope  
+        // var we can call var wherever line in function
+        function area(){
+            //var a => this variable a is up when it runs (run time) and this is called hoisting
+            a = 12
+            console.log('a',a)
+            console.log("working");
+            console.log('func called')
+            var a = 11;
+            console.log('a', a)
+            // can redeclare but not takes value when the place is above the value assigned
+            var a =14
+            console.log('a',a)
+
+            {
+                // let and const block scope
+                // console.log(c)
+                let c = 2
+                console.log('c',c)
+                // let c =23    can't
+                var d = 23;
+            }
+            // can not recall outside and block scope can not redeclare
+            // console.log('c',c)   
+            console.log(d)// but var can declare 
+
+            let c = 1;
+            console.log(c)
+
+        }
+        area()
+
+        // why we should use let and const 
+    
+        var top = 10 //if we use let in here it show error top has been declared
+        console.log(top==10) //false bcz top is window's property and top is read only cann't overwrite
+                            // but we use var in here it seems like we can use top but we don't know it failed silently
+        console.log('top',top)
+
+        // let top = 10 ; //let cannt redeclare /show error have been declared
+        // console.log('top',top)
+
+
+        // using variable undeclared ,it assumed that its value is in window
+        function num (){
+            a =1 //it assumed that window value
+        }
+        num()
+        console.log('a',a) 
+        
+    </script>
+</html>

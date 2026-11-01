@@ -1,0 +1,64 @@
+<html>
+    <script>
+        let About = {
+            name : 'Yin',
+            age : '24',
+            experience(){
+                console.log("working expericen "+ this.name, this.age) // "this" mean property in this object
+            }  //function in object but we called this as method
+        }
+        About.experience()
+
+        let str = JSON.stringify(About) //obj to json format
+        console.log('Json.stringfy()', str)
+
+        let obj = JSON.parse(str)  // this will be new object not belong to About
+        console.log('Json.parse()', obj)
+
+        console.log('About == obj', About == obj) //false
+
+        let item = {
+            name : "orage",
+            price : 30,
+            qty : 2,
+            toString(){
+                 console.log(`item = ${this.name}, price = ${this.price}, qty = ${this.qty}, total= ${this.price * this.qty}`)           
+            }
+        }
+        item.toString()
+        console.log(`item = ${item.name}, price = ${item.price}, qty = ${item.qty}, total= ${item.price * item.qty}`) 
+        // doing like this disadvantages is when we change item or property name or sth we have to change the output value section 
+        // so not to do that we will use tostring() method and this object
+        
+        // toJson use that when we want change property name and leave some data
+        let user = {
+            name :'John',
+            total : 22,
+            release : 2024,
+            password : 'secret',
+            toJSON()
+            {
+                console.log('toJSON')
+                return{
+                    username: this.name,
+                    total :this.total
+                }
+                
+            }
+        }
+        console.log('user',user)
+        // then change toJson method data to Json and show only Json data
+        let string = JSON.stringify(user);
+        console.log('string',string)
+
+        let age = 34;
+        let about = {
+            name : "John",
+            // age : age 
+                // or 
+            age 
+        }
+        console.log("about",about)
+
+    </script>
+</html>

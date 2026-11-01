@@ -1,0 +1,21 @@
+<html>
+    <script>
+            let syn = Symbol("phone-no")
+            let obj = {
+                title : ' javascript ',
+                author : 'David',
+                [syn] : 980398484, // use varriable value as obj property
+            }
+            let obj1 = Object.create(obj) // make obj as parent object
+            obj1.release = 2026
+
+            console.log('obj.keys', Object.keys(obj)) // get it own property
+            console.log('obj1.keys', Object.keys(obj1)) // get it own property
+            console.log('obj1.getOwnPropertyName', Object.getOwnPropertyNames(obj1)) // get it own property
+            console.log('obj.[syn]',obj[syn])
+
+
+
+
+    </script>
+</html>

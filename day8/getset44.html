@@ -1,0 +1,21 @@
+<html>
+    <script>
+          // i will use setter in here  => write
+        let object1 = {
+            name : 'John',
+            set age(newvalue){
+                console.log('setter age', newvalue)
+                if(newvalue > 0 && newvalue <120){
+                    this.Age = newvalue // notice set age and this.Age is not the same if the same name it cause error
+                }
+            },
+
+            get age(){
+                return this.Age // getter age
+            }
+        }
+        object1.age = 70;   
+        console.log('object1',object1)
+        console.log('object1.age', object1.age)
+    </script>
+</html>

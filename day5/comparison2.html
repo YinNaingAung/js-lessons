@@ -1,0 +1,20 @@
+<html>
+    <script>
+        // Comparison operator
+        let obj = {
+            valueOf(){
+                console.log("valueOf called")
+                return 10;
+            }
+        }
+        console.log('obj >= 5',obj>=5); //true 
+        console.log('obj >= 5',obj>="5"); //true 
+        console.log('true > 0', true>0) ; //true
+
+        // lexiographic order / dictionary order => z...> b> a
+        console.log(" 'apple' > 'banana' ", 'apple'>'banana') //false //string comparison
+
+        console.log("'true'>0", 'true'>0) // false
+                    // string 'true' change => number => NaN and NaN not grather than 0
+    </script>
+</html>

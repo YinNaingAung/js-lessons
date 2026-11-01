@@ -1,0 +1,33 @@
+<html>
+    <script>
+        let greeting = 'Hello World';
+        console.log(greeting)
+        console.log("replace = ", greeting.replace("Hello","My"))
+        
+        console.log('uppercase',greeting.toUpperCase(greeting))
+        console.log('lowercase',greeting.toLowerCase(greeting))
+
+        console.log('charAt(1)', greeting.charAt(1))
+        console.log('charAt(greeting.length-1)',greeting.charAt(greeting.length-1))
+        console.log('charCodeAt(l)', greeting.charCodeAt(2))
+
+        let num = "123";
+        console.log('padStart', num.padStart(10,"_"))
+        console.log('padEnd', num.padEnd(10,":"))
+
+        let name = '      yin naing      '
+        console.log(name)
+        console.log( name.trim() + ":")
+        console.log( name.trimEnd() + ":")
+        console.log(name.trimStart())
+
+        console.log('repeat', num.repeat(3))
+        console.log('num[0]',num[0])
+        let nameinfo = ["yin","aung"]
+        console.log(nameinfo[1])
+
+        let str = String.raw `\n`;
+        console.log(str.length)
+    </script>   
+
+</html>

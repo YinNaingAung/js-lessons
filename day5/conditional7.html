@@ -1,0 +1,62 @@
+<html>
+    <a href="javascript:void(0)" onclick="two()">Click</a> 
+    <!--href action to go other page and reload pages but we use void in here href action will be disappears --> 
+
+    <!-- void() prevent default behaviour -->
+
+    <script>
+        let a =3 
+        if(a%2 ==0){
+            console.log('even')
+        }else{
+            console.log('odd')
+        }
+
+        // tenary operator 
+        const str = a%2 == 0 ? 'even':'odd';
+        console.log(str)
+
+        function drawCircle (config){
+            console.log('config', config)
+        }
+        drawCircle({})
+
+        function Circle ({x,y,radius}){
+            // let r = radius || 15
+            let r = radius ?? 15 //first default value 0 works
+            console.log('x',x,'y',y )
+            console.log("radius", r)
+        }
+        Circle({
+            x:10,
+            y:20,
+            radius :0 //null
+        })
+
+        console.log('typeof Circcle',typeof Circle)
+        console.log('typeof null', typeof null)
+        console.log('typeof NaN',typeof NaN)
+
+        let obj = {
+            name : 'naing',
+            age : '33'
+        }
+        console.log(obj)
+        delete obj.name
+        console.log(obj)
+
+        
+        function getSth(){
+            return 100
+        }
+        let store  = getSth()
+        console.log('store',store)
+        let one = void(getSth())
+        console.log('one',one)
+
+        function two(){
+            console.log('two')
+            return 10
+        }
+    </script>
+</html>

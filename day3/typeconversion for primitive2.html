@@ -1,0 +1,61 @@
+<html>
+    <script>
+        // Type conversion 
+        // falsy value to string
+        //any type to string use ""+sth
+
+        console.log(" ''+false =", ''+ false) // string false
+        console.log(" ''+null =", ''+ null) // string null
+        console.log(false)
+        console.log(" ''+ undefined =", ''+ undefined) //string undefined
+        console.log(" ''+NaN =", ''+ NaN) // string NaN
+        console.log (NaN)
+        console.log(" ''+0 =", ""+0) // string 0
+        console.log('0', 0) //number 0
+        let negzero = -0;
+        console.log(" ''+negzero =", ''+negzero) //string 0
+
+        let value = false
+        let valueToString = ""+false; 
+        console.log('value',value,'typeof value', typeof value) 
+        console.log('valueToString', valueToString,'typeof valueToString', typeof valueToString)//string false
+
+        //any type to boolean
+        let boo = true ;
+        console.log('boo ='+ !!boo, 'type of boo', typeof boo) //true
+        let info = 'yin';
+        console.log('info ='+ !!boo, 'type of info', typeof info) //true
+
+        console.log("!!null", !!null) //false
+        console.log("!!undefined", !!undefined) //false
+        console.log("!!NaN", !!NaN) //false
+        console.log("!!0", !!0) //flase
+        console.log("!!''", !!'') //flase
+        console.log("!!0n", !!0n) //false
+        console.log("!!-0", !!(-0)) //false
+        console.log("!!false", !!false) //flase
+
+
+        let str = "flase"
+        console.log('str', !!str) //true
+
+
+        //any type to number use +
+        let a = '10';
+        console.log('a= 10 to number ', +a) // number 10
+    
+        let b = 'name' //invalid string can not change number
+        console.log('b to number', + b) // NaN
+        console.log('+NaN', +NaN) // NaN
+        console.log('+null', +null) // 0
+        console.log('+undefined', +undefined) //NaN
+        console.log('+0', +0) // 0
+        console.log('+false',  +false) // 0
+        console.log('+true', +true) //1
+        console.log(" +'' " , +"") //0
+
+
+
+
+    </script>
+</html>

@@ -1,0 +1,73 @@
+<html>
+    <script>
+        function one(){
+            for (let i = 0; i < 2; i++) {
+                console.log('one')
+            }
+        }
+        function two(){
+            console.log('two')
+        }
+        one()
+        one() //I call one() tow times and it show twice but I don't want like that 
+        two()  // thes task is how many times i call one() it will have to show the answer once
+        two()
+
+        //imperative solution but it have weakness we have to write like that in every function so
+        let onceTask = false
+        function three(){
+            if(!onceTask){
+                console.log('onceTask');
+                onceTask = true
+            }
+        }
+
+        
+        function four(){
+            if(!onceTask){
+                console.log('onceTask 4')
+                onceTask = true
+            }
+        }
+        three()
+        three()
+
+        four()
+        four()
+        
+        //the solution in here
+        function three1(){
+            console.log('three1')
+        }
+        function four1(){
+            console.log('four1')
+        }
+        //for all every function use in here
+
+        // impure function 
+        function callOnce(fn){
+            let oncetask = false // additional feature
+
+            return function(){
+                if(!oncetask){
+                        oncetask = true; // control state with closure
+                        fn() // wrap -> outside original function ငုံထားတယ် use another function so we can use adddition feature
+                  }
+            }
+            
+        }
+        let getOnce = callOnce(three1)
+        getOnce()
+        getOnce()
+
+        let getOnce1 = callOnce(four1)
+        getOnce1()
+        getOnce1() 
+
+    // 1. closure function => manage state with closure function 
+    // 2. fist class function 
+     // callOnce =>  // Higher Order Function 
+        //         accept function
+        //         return function
+    </script>
+</html>

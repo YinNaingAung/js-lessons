@@ -1,0 +1,50 @@
+<html>
+    <script>
+        let circle = {
+            radius : 5,
+            area(){
+                return Math.PI *this.radius*this.radius
+            }
+        }
+        console.log('circle.area',circle.area());
+
+        // use getter method ,use this method when we get the return data from other field(computefield)
+
+        let sale = {
+            qty : 5 ,
+            price : 200,
+           get total() {
+                return this.qty * this.price
+        }
+    }
+    console.log('sale.total',sale.total); //not need to use total() in here
+
+        let object = {
+            name : "Smith",
+            age : 20
+        }
+
+        object.age = 300 // Does this make sense? No , so use setter
+        console.log('object',object)
+        
+        // i will use setter in here  => write
+        let object1 = {
+            name : 'John',
+            set age(newvalue){
+                console.log('setter age', newvalue)
+                if(newvalue > 0 && newvalue <120){
+                    this.Age = newvalue // notice set age and this.Age is not the same if the same name it cause error
+                }
+            },
+
+            get age(){
+                return this.Age // getter age
+            }
+        }
+        object1.age = 70;   
+        console.log('object1',object1)
+        console.log('object1.age', object1.age)
+
+
+    </script>
+</html>

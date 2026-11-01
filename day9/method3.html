@@ -1,0 +1,65 @@
+<html>
+    <script>
+        // every and some method 
+        let num = [1,2,3,4]
+
+        // this every method returns true when every checked value is fit the condition
+
+        let every = num.every(i => i > 0 )
+        console.log('every', every) // true
+
+        let every1 = num.every (i => i<4)
+        console.log('every1', every1) //false
+
+        // in here some method returns when some of the checked value is fix the condition
+        // it will return true
+        let some = num.some(i => i <0) // false
+        console.log('some',some)
+
+        let some1 = num.some(i => i < 2) // true
+        console.log('some1', some1)
+
+        let member = [
+            {
+                name: 'yin',
+                age :20, 
+                gender:'male'
+            },
+            {
+                name : "naing win",
+                age:18,
+                gender:'male'
+            },
+            {
+                name : 'Hla',
+                age: 16,
+                gender:'female'
+            },
+            {
+                name : 'Cho Cho lwin',
+                age:18,
+                gender: 'female'
+            }
+        ]
+        
+        console.log(member[1].name.length) // 9
+        //let female = member.filter ( i => i.gender === 'female' && i.age < 18).map(
+        //     i=> i.name
+        // )
+        // console.log('female',female)
+
+        let female = member.filter(i => i.gender === 'female')
+                            .reduce((a,b)=> a.age< b.age ? a : b)
+        console.log('female', female)
+
+        // let longname = member.reduce((a,b)=> a.name.length > b.name.length ? a.name : b.name)
+        let longname = member.map(i => i.name).reduce((a,b)=> a.length > b.length ? a: b)
+        // i will show you example you can understand
+        // yin, naing win, Hla, Cho Cho Lwin
+        // 3  , 9  , 3,    12
+        // a > b? a:b = 3>9 ? 3,9 => 9
+        //                    9>3 => 9
+        //                    9>12 => 12
+        console.log(longname)
+    </script>
+</html>

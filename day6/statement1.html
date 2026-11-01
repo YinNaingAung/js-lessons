@@ -1,0 +1,68 @@
+<html> 
+    <script>
+       
+       /* expression 
+        if give (any) a value => expression
+
+        statement  => complete action
+
+        expression => clause
+        statement => sentence
+        */
+
+        let a = 1 // declaration statement => complete action
+        console.log('a',a);
+        a++; //side effect =>  expression statment
+
+        // compound statement 
+        let hungry = true
+        if(hungry)
+            console.log("I am starving");
+            console.log("i will eat a horse") //this code line is not included in hungry condition
+                                              // try hungry false you will see that line is working 
+                                              // so to combine them use {}
+
+        if(hungry){
+            console.log("I am starving");
+            console.log("i will eat a horse")
+        } 
+            console.log("end")
+
+        // empty statement 
+        if (hungry);
+        else{
+            console.log('stop')
+        }
+
+        // conditional statement 
+        // (falsy or truthy)
+        if(123){
+            console.log("then")
+        }else{
+            console.log("else")
+        }
+
+        let myan, eng, math
+        myan = + prompt("enter your myan score")
+        eng  = + prompt("enter your eng score")
+        math = + prompt("enter your math score")
+        console.log("myan,eng,math", myan,eng,math)
+
+        // check fail or pass all sub
+        // nested if 
+        if(myan>=40 && eng>=40 && math>=40){
+            if(myan>=75 || eng >=75 || math >=78){
+                console.log('you got distinctions')
+            }else{
+            console.log('congratulations! you passed the exam')
+
+            }
+        }
+        else{
+            console.log('Sorry! you faild and   upset to you')
+        }
+
+
+       
+    </script>
+</html> 

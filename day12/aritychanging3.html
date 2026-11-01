@@ -1,0 +1,32 @@
+<html>
+    <script>
+        let arr = ["1","2","3","4","5"]
+        let nums = arr.map(parseInt)
+        console.log('nums', nums)
+
+        // map(value, index, array)
+        // parseInt (input, radix)
+        // filter(value, index, array)
+        // reduce(accumulator, value, index. arr)
+
+        // parseInt("1",0)
+        // parseInt("2",1)
+        // parseInt("3",2)
+        // parseInt("4",3)
+        // parseInt("5",4)
+
+        console.log('parseInt("2",1)', parseInt('2',1))
+
+        // arityChange instead of using two parameter, use just one parameter
+        function unary(fn){
+            return function(x){
+                return fn(x)
+            }
+        }
+        let number = arr.map(unary(parseInt))
+        console.log('parseInt("2",1)', parseInt('2',1))
+        console.log(number)
+
+
+    </script>
+</html>

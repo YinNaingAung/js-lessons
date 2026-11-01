@@ -1,0 +1,35 @@
+<html>
+    <script>
+        // function as first-class object 
+        //a programming language that supports funcitonal programming gives function as first class
+        // three step to be perfect first class 
+
+        function fun(){
+            console.log('one')
+            console.log('two')
+        }
+        // Rule 1
+        // store function as variable 
+        let data = fun;
+        data()
+
+        //Rule 2
+        // give function as parameter argument
+        function rule2(fn){
+            console.log("fn")
+            fn()
+        }
+        rule2(fun)
+
+        //Rule 3
+        //return function in function
+        function giveFun(){
+            console.log('giveFun');
+            return function(){
+                console.log('return function inside')
+            }
+        }
+        giveFun()()
+        // function as value 
+    </script>
+</html>

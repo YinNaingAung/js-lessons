@@ -1,0 +1,68 @@
+<html>
+    <script>
+        let obj = {
+            //it looks for primitive types until it found
+            valueOf(){
+                console.log('valueOf called')
+                return undefined //20/null/''/undefined/Nan  ==> Primitive type
+            },
+            toString(){ // can overwrite toString() like this
+                console.log ('toString called')
+                return 10
+            }
+        }
+        console.log('tostring()', obj.toString()) // dont look at this answer //10 why this value show number with blue color not string color// can overwrite toString()
+
+        console.log(obj.valueOf())
+
+        console.log('obj to string',''+obj) //dont' look at this answer //20
+
+        // valueOf called 
+        // if primitive 
+        // 20/null/''/undefined/NaN
+
+        console.log('obj to number',+obj)           //20
+        console.log('obj to boolean', !!obj) //true/ actually the value will have to be false in normal 
+                                            // but in here it assumed that object so obj has data so it give out true
+                                            //it does not flow down  ValueOf() and toString(); just stop in obj
+                                            //change obj to boolean it give out true
+                                            //all objects are truthy in Js
+
+        // taking data skipping when the valueOf data is obj {} 
+        // and it takes toString data 
+        let oo = {
+            
+        }
+        console.log(!!oo)
+
+        
+        let obj1 = {
+            valueOf(){
+                console.log('valueOf called')
+                return {} //obj => this is obj so it is negalect
+            },
+            toString(){ 
+                console.log ('toString called')
+                return 10  //this is primitive type so it takes this value
+            }
+        }
+
+        console.log('tostring()', obj1.toString()) 
+        console.log('obj to string',''+obj1) 
+        
+        //when both are obj {} it causes error
+        let obj2 = {
+            valueOf(){
+                console.log('valueOf called')
+                return {}
+            },
+            toString(){ 
+                console.log ('toString called')
+                return {}   
+            }
+        }
+        console.log(+obj2) //show error //can not convert object to primitive value
+        //this is sematics way
+      
+    </script>
+</html>s

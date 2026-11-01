@@ -1,0 +1,42 @@
+<html>
+    <script>
+        let age0 = 10;
+        let age1 = 20;
+        let age2 = 30
+        let total = age0 + age1 + age2
+        console.log('total',total)
+        //instead of doing like that we will use array
+        let ages = [10,20,30] // store value and store the same data types
+
+        for(let age of ages){
+            console.log(age)
+            total += age
+        }
+        console.log('total',total)
+        console.log('average',total/ages.length);
+
+        let arr = [10,20,30]
+        console.log('arr',arr)
+        
+        arr[1] ++ 
+        console.log('increase value', arr)
+
+        arr[1] = 40
+        console.log('change value', arr)
+
+        arr1 = [...arr,10,20]
+        console.log('add value',arr1)
+
+        arr2 = [...arr]  // copy sematic
+        console.log('arr2',arr2)
+        arr2[0] = 100
+
+        console.log('arr',arr) // 10,40,30
+        console.log('arr2',arr2) // 100,40,30
+       // Event we change the value in arr2 that is not effect to parent array so 
+        // this is copy sematic
+
+        
+
+    </script>
+</html>

@@ -1,0 +1,67 @@
+<html>
+    <script>
+        // function call => functi0n is collection of action code
+        // many line to small function breakdown => called abstraction 
+        function call(){
+            console.log('hello')
+            console.log('world')
+        }
+        call() // easy to read so that is documentation
+        console.log('next')
+        call()
+
+        // function expression 
+        let expression = function (){
+            console.log('function expression')
+        }
+        expression()
+        // arrow function 
+
+        let arrow = ()=> console.log('arrow function')
+        arrow()
+
+        // function parameter 
+        function para(a,b){
+            return a+b
+        }
+        let store = para(1,2)
+        console.log('store',store)
+
+        // array destructurring 
+        function show(x,y){
+            console.log(`show ${x} ${y}`)
+            return x + y
+        }
+        let spread = [10,20]
+        let coor = show(...spread)
+        console.log('coor', coor)
+
+        function arr ([x,y]){
+            console.log(`arr ${x} ${y}`)
+        }
+        let value = [1,2]
+        arr(value)
+
+        // object destructuring 
+        function object(obj) {
+            let x = obj.x;
+            let y = obj.y
+            console.log(`obj destructuring ${x} ${y}`)
+        }
+        let obj = {
+            x:100,
+            y:200
+        }
+        object(obj)
+
+        // instead of doing this use 
+    function object1({x,y}){
+        console.log(`obj destructuring ${x} ${y}`)
+    }
+    let obj1 = {
+        x :200,
+        y:300
+    }
+    object1(obj1)
+    </script>
+</html>

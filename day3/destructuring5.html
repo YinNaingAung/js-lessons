@@ -1,0 +1,36 @@
+<html>
+    <script>
+        // array destructuring 
+        let number = [1,2,3,4]
+        console.log('number[0]', number[0]) //read
+        console.log('number[1]', number[1]) //read
+
+        let index0 = number[0];
+        let index1 = number[1]
+        console.log("index0", index0)
+        console.log("index1", index1)
+
+        let [a,b] = number
+        console.log('a', a, 'b', b)
+
+        let  num1 = 10;
+        let  num2 = 20;
+        // console.log('num1',num1,'num2', num2)
+        
+        // changer value 
+        // not pragmatic
+        // let c =1
+        // let d = 2
+        /*let temp = d; this is like bridge
+        d = c
+        c = temp
+        */
+
+    //    pragmatic way 
+        // switch value 
+        [ num1,num2]=[num2,num1]
+        console.log('num1',num1)
+        console.log('num2',num2)
+
+    </script>
+</html>

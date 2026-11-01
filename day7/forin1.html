@@ -1,0 +1,37 @@
+<html>
+    <script>
+        //forin old way
+        let obj = {
+            name: 'yin',
+            age: 24,
+            address : 'hopin'
+        }
+
+        for(let props in obj) {
+            // console.log('props',props)
+            console.log('props',props,'value',obj[props])
+        }
+
+        for(let i=0; i<10; i++){
+            // but if you want to stop the number 5
+            if(i==5){
+                break; 
+            }
+            console.log('i',i) //normal condition-> get the number 0 to 9
+                               //break condition -> get the number 0 to 4
+        }
+        console.log('end')
+
+
+        outer:for(let i=0; i<10; i++){
+                for(let j=0; j<10; j++){
+                    if(j==5){
+                        break outer; 
+                    }
+                    console.log('j',j) 
+                } //break works line number  32 but if you wnat to braek line number 34 use outer
+            console.log('i =>',i)  //if we use outer: the line will be ommitted
+        }
+        console.log('end work')
+    </script>
+</html>

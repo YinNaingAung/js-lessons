@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Posiive Infinity
+        console.log("infinity", Infinity);
+        console.log("1/0", 1/0)
+
+        // Negative Infinity
+        console.log("neg infinity", Number.NEGATIVE_INFINITY)
+
+        // NaN => the not-a-number value
+        console.log("infinity/infinity",Infinity / Infinity) //NaN
+        console.log('0/0',0/0) //NaN
+        let number = 0/0;
+        let result  = 'number'*3
+        console.log(result) //NaN
+         
+        console.log("result = result", result === result)
+        console.log("number = result", number== result) //false becuase we can not check two invalid number it will return these two type is not the same
+                                                        // so we get the answer false
+        console.log("isNaN", isNaN(number)) // check number is NaN . it true it returns true
+
+        //Zero 
+        // note that every programming language have positive zero and negative zero
+        // go to IEEE website / floating Point => sign - 0 => positive/ 1=> negative 
+
+        // Positive zero 
+        // Negative zero
+        let posZero = 0
+        let negZero = -0;
+        console.log(posZero)
+        console.log(negZero);
+        console.log("posZero = negZero", posZero === negZero) //true
+        console.log(typeof(posZero)) 
+        console.log(typeof(negZero))
+
+        // string to number 
+        let str = "123.3";
+        console.log("string", str);
+        console.log("str to number => parseInt", parseInt(str)); // 123
+        console.log("str to number => parseFloat",parseFloat(str)) // 123.3
+
+        // passed value is a finite number and the number is neither positive/negative infinity nor NaN
+        //it accepts and determines the value is decimal or integer
+        console.log(Number.isFinite(2/3)) //true
+        console.log(Number.isFinite(0/0)) // false
+        console.log(Number.isFinite(str)) // false
+
+        let chkInte = 123
+        let chkInte1 = 123.4
+        console.log(Number.isInteger(chkInte)) // true
+        console.log(Number.isInteger(chkInte1)) // false
+
+        console.log("check its value is the same// rounding error",(0.3-0.2) == 0.1) //false
+        console.log("rounding error",0.3-0.2) //0.099999999 it causes only .1 
+        console.log("rouniding",(0.5-0.3)==0.2) //true
+        // so decimal number can not be represented in computer exactly
+        
+        // irrational number 
+        // 22/7, Pi ,3/4
+
+        // An example of layout for 32-bit floating point
+
+    //  sign  exponent (8 bits)           fraction (23 bits)
+    //  0 / 0 1 1 1 1 1 0 0 / 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 / = 0.15625
+    // 31  30            23  22               (bit index)                0
+    
+    // sign 0 = positive / 1 = negative 
+    //12.34
+   // exponent before . (12. )/ fraction after . (.34)
+   
+// computer keeps only binary code 0 1 / 0.09999999... can't get integer and can't get modulus 0 so computer memory just keeps as far as it can (ဆံ့သလောက်ဘဲသိမ်း)
+// so it causes rounding error 
+// not to be rounding error use bigdecimal library 
+        let nuber = 3/4
+        console.log("nuber",nuber)
+        console.log('tostring',nuber.toString(2))
+
+console.log('number max', Number.MAX_VALUE);
+let string = '1' + '2'.repeat(308)
+console.log(string);
+let num = Number(string);
+console.log(num)
+let deci = '2'.repeat(308)
+let decitonum = Number(deci)
+console.log(decitonum)
+
+let bigint = BigInt(string)
+console.log("Bigint",bigint)
+let bitintPlus = bigint + 1000n; //1n , 25n
+console.log("BigintPlus + 1", bitintPlus)
+    </script>
+</body>
+</html>

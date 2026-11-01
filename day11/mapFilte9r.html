@@ -1,0 +1,70 @@
+<html>
+    <script>
+            let students = [
+            {
+                name: 'Aung Aung',
+                age : 20,
+                city : 'Ygn',
+                gender : 'Male',
+                address : {
+                    no : 4,
+                    road : 323
+                }
+            },
+            {
+                name : 'Mya Mya',
+                age : 24,
+                city : 'Mdy',
+                gender : 'Female',
+                address : {
+                    no : 4,
+                    road : 323
+                }
+            },
+            {
+                name : 'Tun Tun',
+                age : 20,
+                city : 'Ygn',
+                gender : 'Male',
+                address : {
+                    no : 4,
+                    road : 323
+                }
+            },
+            {  
+                name : 'Mg Win',
+                age : 20,
+                city : 'Mdy',
+                gender : 'Male',
+                address : {
+                    no : 4,
+                    road : 323
+                }
+            }
+        ]
+        let name = students.map(item =>{
+            return item.name
+        })
+        console.log(name)
+
+        // reduce => universal method  // can use reduce instead of using map and filter 
+        function map(arr, fn){
+            return arr.reduce((result,item)=> [...result,fn(item)],[])
+        }
+        let result = map(students, (student)=> student.name)// fn(item) => student
+        console.log('result', result)
+
+        
+        let gender = students.filter(info => info.gender === 'Male')
+        console.log('gender',gender)
+
+        function filter(arr, fn){
+            return arr.reduce((result,item) => fn(item) ? [...result,item] : result,[])
+        }
+        let filterResult = filter(students,(student)=>student.gender == 'Male' ) // student.gender == 'Male' ? student : ''
+        console.log('filterResult', filterResult)
+
+        let re = students.map(item=> item.age > 20 ? 'hello': 'false')
+        console.log(re)
+    </script>
+</html>

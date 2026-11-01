@@ -1,0 +1,26 @@
+<html>
+    <!-- import/Ramda librar -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script> 
+
+    <script>
+
+         function appendHi(str){
+            return str + 'world'
+        }
+
+        function toUpper(str){
+            return str.toUpperCase()
+        }
+
+        let appendAndUpper = R.pipe(appendHi,toUpper) //(appendHi, toUpper) // connect any two function
+        console.log('appendAndUpper', appendAndUpper('welcome to my '))
+       
+
+
+        function add(x,y){
+            return x+y
+        }
+        let curryAdd = R.curry(add)
+        console.log('curryAdd', curryAdd(1), 'curryAdd(2,2)', curryAdd(2)(2))
+    </script>
+</html>

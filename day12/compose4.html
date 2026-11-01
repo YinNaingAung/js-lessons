@@ -1,0 +1,110 @@
+<html>
+    <script>
+        function appendHi(str){
+            return str + 'world'
+        }
+        // console.log('appendHi',appendHi('hello'))
+
+        function toUpper(str){
+            return str.toUpperCase()
+        }
+        // console.log('toUpper', toUpper('hello'))
+
+        let result = toUpper(appendHi('hello'))
+        console.log('result', result)
+
+        let answer = appendHi(toUpper('my '))
+        console.log('answer', answer)
+
+        // imperative way => appendHi => toUpperCase
+
+        function appendUpper (str){
+            return toUpper(appendHi(str)) // imperative way used fixed function =>ပုံသေသတ်မှတ်ထားပြီး function တွေကိုဘဲ အသုံးပြုလို့ရမယ်
+        }                                   // one or two function
+        console.log('appendUpper', appendUpper(" append upper and "))
+
+        // problem 
+        // no.1 => this function is static      => cannot combine any function 
+        // no.2 => these small function (appendHi,toUpper) is hard to do task the main function (appendUpper)
+
+
+        // In functional programming we can compose any function dynamically  
+        // to do that
+        // build small function and combine thase function together and make it bigger 
+        // use that method => lego concept
+         function compose(f,g){
+            return function(x){
+                return f(g(x))
+            }
+        }
+        let appendAndUpper = compose(toUpper,appendHi) //(appendHi, toUpper) // connect any two function
+        console.log('appendAndUpper', appendAndUpper('welcome to my '))
+       
+
+        // functional programming has two main pillar (ထောက်တိုင်)
+        // 1. Referentail transparency => pure function
+        // 2. composition  and pipeline
+
+        function composeMany(...fns){
+            return function (x){
+                return fns.reduceRight((input,fn)=> fn(input),x)
+                //x = hello
+                // fn(input) => fn(x) // input = x 
+                // reduceRight => appendHi function works first then toUpper
+            }
+        }
+        newFun = composeMany(toUpper,appendHi) // connect any function two or three or more
+        console.log('newFun', newFun('hello '))
+
+        function add(x){
+            return x+1
+        }
+        function multi(x){
+            return x*2
+        }
+        function divBy(x){
+            return x/2
+        }
+        console.log('add',add(2))
+        console.log('multi',multi(2))
+        console.log('divBy',divBy(2))
+
+        newone = composeMany(divBy,multi,add) //compose problem => instead of giving the parameter firstly that works first, we have to give it in the last place ? that is the problem
+        console.log('newone',newone(5))
+
+        // to fix the problem use pipe 
+        function pipe(...fns){
+            return function(x){
+                return fns.reduce((input,fn)=>fn(input),x)
+            }
+        }
+        newpipe = pipe(add,multi,divBy)
+        console.log('newpipe',newpipe(5))
+
+        // initial input => workflow
+           /* result = funA(input)
+            result = funB(result)
+            result = funC(result)
+            */
+        //  Rule.1  single input => single output  // to make function composition
+        // why? singleinputoutput => function return just one value
+        // Rule.2 First output type = second input type (match)
+
+        // problem
+       /* problem = pipe(toUpper,multi)
+        console.log('problem', problem('hello')) //NAN
+        */
+
+        // type match 
+        function length(str){
+            return str.length
+        }
+
+        type = pipe(appendHi,length,multi)
+        console.log('type', type('one')) // one= oneworld =8=> 8*2=> 16
+
+        // Javascript is not a real functional programming so we have to write with pipe or compose 
+        //use  Ramda library for functional programmming 
+
+    </script>
+</html>

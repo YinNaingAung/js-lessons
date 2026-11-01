@@ -1,0 +1,40 @@
+<html>
+    <script>
+     // immediately invoke function expression
+        (function () {
+            console.log('hello')
+        })()
+
+         // clouser function or nested function 
+        //  inner function can use outer function variable so it called clouser
+        //  noted =>like set state using function
+        function outer(){
+            let one = 1
+            function inner(){
+                console.log('two')
+                console.log( 'one', one)   
+               
+            }
+            inner()
+        }
+     outer()
+      
+
+
+        // inner() => no way
+
+       function outside() {
+         return function inside(){
+            let id = 0;
+            console.log('id', id)
+            return id++;
+         }
+       }
+   let nextid = outside();
+       console.log('nextid',nextid())
+    //    console.log('nextid',nextid())
+
+
+
+    </script>
+</html>

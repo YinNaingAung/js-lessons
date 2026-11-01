@@ -1,0 +1,36 @@
+<html>
+    <script>
+        // Referential funciton 
+        // Memoization 
+
+        // when return impure function in pure the function will be impure
+        function pure(){
+            return impure()
+        }
+
+        function getRandom(){
+            return Math.random()
+        }
+        console.log('getRandom',getRandom()) // impure function 
+        //but using the different way we can chagne the condition impure to pure
+
+        function getRandom1(fun){
+            return fun()
+        }
+        console.log('getRandom1', getRandom1(Math.random)) //impure different output
+
+        function impureUpdateObj(obj){
+            obj.name = "John";
+            obj.age = 24
+
+        }
+        function pureUpdateObj(obj){
+            let newObj = {...obj}
+            newObj.name = 'John'
+            newObj.age = 24
+            return newObj
+        }
+        console.log(pureUpdateObj())
+
+    </script>
+</html>

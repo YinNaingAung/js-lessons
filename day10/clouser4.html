@@ -1,0 +1,24 @@
+<html>
+    <script>
+        function unique() {
+            let id = 0;
+            return function inner()
+            {
+                console.log('one', id)
+                return id++
+            }
+        }
+        let next = unique()
+        console.log('next',next())
+        console.log('next',next())
+
+    //    reset 
+        let next1 = unique()
+        console.log('next1',next1())
+        console.log('next1',next1())
+
+
+
+
+    </script>
+</html>

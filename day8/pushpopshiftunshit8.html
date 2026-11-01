@@ -1,0 +1,22 @@
+<html>
+    <script>
+        let arr = [ 10, 20, 30, 40]
+        console.log('arr',arr)
+
+        arr.push(50, 60) // 10, 20,30,40,50,60
+        console.log('push', arr)
+
+        arr.pop() // 10,20,30,40,50
+        console.log('pop',arr)
+
+
+            console.log('arr.entries',arr.entries)
+        for(let [key,value] of arr.entries()){
+            console.log('key index', key, 'value',value)
+            // to change value 
+            // value *= 2 // this is not work
+            arr[key]=value *= 2; //no use
+            console.log('value',value)
+        }
+    </script>
+</html>

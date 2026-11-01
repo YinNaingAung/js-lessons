@@ -1,0 +1,42 @@
+<html>
+    <script>
+        let a = 1,b,c;
+        console.log(a)
+        b =10
+        c = 2
+        console.log(a,b,c)
+
+        let i = 1
+        i++;
+        console.log('increase i',i)
+
+        const z = 2 ; //cannot change this constant variable
+
+        // but in obj we can change it value references
+        
+        const obj = {
+            name:'yin',
+            age:24
+        }   
+        console.log(obj)
+
+        // no this way 
+        // obj={
+        //     name:'naing',
+        //     age:33
+        // }
+        
+        // use like this 
+        obj.name = "yin naing aung";
+        obj.age =  25;
+        obj.location = 'kamaryute'
+        console.log(obj)
+        let obj2 = obj
+        console.log(obj2)
+        obj2.position = 'Manager';
+        console.log(obj2) 
+        console.log(obj) // reference sematics
+
+
+    </script>
+</html>

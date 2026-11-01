@@ -1,0 +1,108 @@
+<html>
+    <script>
+        
+        let students = [
+            {
+                name: 'Aung Aung',
+                age : 20,
+                city : 'Ygn',
+                address : {
+                    no : 4,
+                    road : 323
+                }
+            },
+            {
+                name : 'Mya Mya',
+                age : 24,
+                city : 'Mdy',
+                address : {
+                    no : 4,
+                    road : 323
+                }
+            },
+            {
+                name : 'Tun Tun',
+                age : 20,
+                city : 'Ygn',
+                address : {
+                    no : 4,
+                    road : 323
+                }
+            },
+            {  
+                name : 'Mg Win',
+                age : 20,
+                city : 'Mdy',
+                address : {
+                    no : 4,
+                    road : 323
+                }
+            }
+        ]
+       
+        // divide with city and make group 
+      /* {
+         'Ygn':[]
+        'Mdy':[]
+       }*/
+
+
+    //    let cityGroup = students.filter(i => {      
+        // console.log(i)
+        // if(i.city === 'Ygn'){
+        //     console.log(i)
+        // }else if(i.city === 'Mdy'){
+        //     console.log(i)
+        // }
+    // })
+    // let newgroup = []
+    // for(let value of students){
+    //     if(value.city = 'Ygn'){
+    //         newgroup.push(value)
+    //     }
+    // }
+    // console.log(newgroup)
+
+    // console.log(students[0].address.no)
+    console.log(students[0].address.no)
+
+    // pure funciton 
+    function groutBy(arr){
+        let group = {} 
+        console.log(group)
+
+        for(const student of arr){
+            // console.log(student)
+            console.log(student.city) 
+        
+            if(!group[student.city]){ // group [YGN,MDY]
+                group[student.city] = [student] // (student.city)YGN = (student)studnet YGN , Mdy = student MDY
+                console.log(group[student.city])  // think about missing array group[] = []
+            }else{
+                group[student.city].push(student)
+        }       
+        }
+        return group
+    }
+    // console.log('students',students)
+    let result = groutBy(students)
+    console.log('result', result)
+
+    
+    
+    // reduce has two parameter 
+    // arr.reduce((a,b)=> a + b , 0 => 0 is default value of a  )
+    let groupBy2 = (arr) => arr.reduce((group,student)=>{
+        // console.log('group',group)
+        // console.log('student',student)
+        if(!group[student.city]){
+            group[student.city] = [student]
+        }else{
+            group[student.city].push(student)
+        }
+        return group
+    } ,{}  ) // {} is defalut value of first argument
+    
+    console.log(groupBy2(students))
+    </script>
+</html>

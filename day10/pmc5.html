@@ -1,0 +1,20 @@
+<html>
+    <script>
+        // function properties 
+        function hello(a,b){
+            if(arguments.length < hello.length)
+        {
+            console.warn('function expected ' + hello.length + ' but found ' + arguments.length)
+        } // nott to show warning give argument
+            console.log(`hello ${a}, ${b}`)
+
+        }
+        console.log('hello.name', hello.name) // hello
+        console.log('length', hello.length) // 2 => a,b
+
+        hello() // undefined => no return value
+
+        console.log('tostring', hello.toString())
+        console.log('isNaN',isNaN.toString())
+    </script>
+</html>

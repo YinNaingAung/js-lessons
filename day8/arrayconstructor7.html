@@ -1,0 +1,33 @@
+<html>
+    <script>
+        // constructor 
+        let arr = new Array(5) //if only one parameter that will be length
+        console.log('arr',arr)
+
+        let arr1 = new Array(10,20) // if two parameter that will be value
+        console.log('arr1',arr1)
+
+        let arr2 = Array.of(20,30) //value
+        console.log('arr2',arr2)
+
+        // clone 
+        let arr3 = Array.from(arr2)
+        console.log('arr3', arr3)
+
+
+        // dynamic array  
+        let dyna = [20,30] //only have two index 0,1 but we can add
+        dyna[4]=40 // like this
+        console.log('dyna',dyna)
+        
+        let room = [20,30] 
+        room["2"] = 40 // even string we can increase array room // change string '2' to number 2
+        console.log('room',room.length, room)
+
+        room['number'] = 'one'
+        console.log('room',room);
+
+        room[-1] = 100 // index number start zero so this will be property and value
+        console.log('room',room)
+    </script>
+</html> 

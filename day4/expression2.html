@@ -1,0 +1,68 @@
+<html>
+    <script>
+        // Expression 
+        //expression that can give any value or a value;
+        //An expressoin is the pharse of javascript that can be evalutated to produce a value;
+        
+    //     2 => value 
+    //     let a = 10
+    //     a => value  => simple expression or Primary expression 
+
+    //  a +2 => value => complex expression with operator
+    //  2+1
+
+     let obj = {
+        name:"Jonh"
+     }// object expression
+
+     console.log('name', obj.name)
+     console.log('name', obj['name'])
+     let arr = [10,30] // array expression 
+     
+     let fun = function () {
+        console.log('fun runs')
+     }
+    console.log('fun',fun())// return a value undefined //invocation expression  // function expression 
+    //fun() => for calling a function or method is known as invocation expression
+     let object = {
+        name :'Juli',
+        address: {
+            city:'New York',
+            houseNo : 1223
+        }
+     }
+
+     console.log("city", object.address.city)
+    //  what if we dont have address 
+    console.log(object.address3) //undefined
+    
+
+    // console.log('city', object.address1.city)
+    //expression2.html:37 Uncaught TypeError: Cannot read properties of undefined (reading 'city')
+
+    // we can solve this error using conditional property access 
+    console.log("city", object.address1?.city) //return undefined at least fix error
+    console.log("city", object.address1?.["city"]) //return undefined at least fix error
+
+     let a = { b:{}}
+    //  a.b?.c?.d => undefined
+
+    // conditional invocation 
+    let fun1 // undefined /or null the function did not call the valu
+    // fun1() //TypeError: fun1 is not a function
+    console.log('fun1', fun1?.())
+    
+    let fun2 = fun
+    fun2?.() //or fun2() ==> safty check
+    console.log('fun2', fun2?.())
+
+
+    // object creation expressoin 
+    //  use New keyword 
+    let Cobject = new Object() //can wirte new Object and ommited parenthesis () 
+    let now = new Date()        //if we don't need to pass the value to the constructor
+    console.log(Cobject)
+    console.log(now)
+
+    </script>
+</html>

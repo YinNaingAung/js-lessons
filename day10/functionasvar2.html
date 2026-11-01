@@ -1,0 +1,28 @@
+<html>
+    <script>
+        function hello(){
+            console.log('hello world')
+            return 1
+        }
+        let store = hello // function variable /// store funciton as variable and use
+        console.log('store', store())
+
+        // property in function 
+        function uniqueId(){
+            console.log('uniqueId')
+            return uniqueId.id ++;
+        }
+        uniqueId.id = 0
+        console.log('uniqueID',uniqueId())
+        console.log('uniqueID',uniqueId()) 
+
+        // own or default property in function like name every function has name property 
+        console.log('name',uniqueId.name) // name represents it function name (uniqueId)
+
+       
+
+       
+       
+
+    </script>
+</html>

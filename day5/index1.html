@@ -1,0 +1,65 @@
+<html>
+    <script>
+        // loosely equal
+            // == /
+            console.log("\'3\' == 3", "3" == 3) //true
+        // strict equal 
+        // === /check types
+            console.log("\'3\' == 3", "3" === 3) //false
+
+            console.log('0 === -0', 0 === -0) // true
+            console.log('null == undefined' , null == undefined) //true
+            // one is number and othr is string, change string to number and comparison again
+            //  that coverted value 
+            //true =1 ,false 0
+            console.log('"" == 0' , "" ==  0) //true 
+            console.log('true = "1" ' , true ==  '1') //true
+
+            // obj and number or string 
+            // change obj to primitive type and change string to number and compare
+
+            let obj = {
+                valueOf(){
+                    console.log("valueOf called")
+                    return 10
+                }
+            }
+            console.log("obj== '10' ", obj == "10") //true
+            /*
+            obj == "10"
+             10 == 10 (change string 10 to nubmer)
+            */
+            console.log("obj== true " ,obj == true) //false //if boolean change number
+            console.log("0 == flase' ", 0 == false) //true //if boolean change number
+
+            console.log(" 0 == null ", 0 == null) //false
+            console.log("0 == undefined ", 0 == undefined) //false
+
+           /* null = undefined 
+
+           when we use == to chack condtion, string and boolean change to number and check again but not null and undefined it does not change
+           
+            string  Number
+            string (change)=> Number 
+            compare
+
+            boolean number 
+            boolean => Number
+            compare
+
+            Object number|string 
+            object => primative 
+            string => number 
+            compare 
+
+            other combination false
+
+            if you donot use these 
+            use strict equal
+            
+            */
+            
+
+
+    </script>
+</html>

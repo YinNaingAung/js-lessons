@@ -1,0 +1,16 @@
+<html>
+    <script>
+        function payment(){
+            console.log('payment')
+        }
+
+        function log(fn){
+            return function(){
+                console.log('fn', fn.name, 'was called')
+                return fn()
+            }
+        }
+        let result = log(payment)
+        result()
+    </script>
+</html>

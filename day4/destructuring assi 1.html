@@ -1,0 +1,30 @@
+<html>
+    <script>
+        // array destructuring
+        let arr = [10,20,30,40]
+        let [a,b,...c] = arr
+        console.log('a ',a) //10
+        console.log('b ',b) //20
+        console.log('c ',c) // [30,40]
+
+        // string destructuring 
+        let str = "hello"
+        let [d,e,...f] = str
+        console.log('d ',d)
+        console.log('e ',e)
+        console.log('f ',f)
+
+        // object destructuring 
+        let obj = {
+            name: 'Joe',
+            age: 23
+        }
+        // let name = obj.name;
+        // let age  = obj.age;
+        let {name,age} = obj;
+        console.log("name ",name);
+        console.log("age ",age)
+
+
+    </script>
+</html>

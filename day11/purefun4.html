@@ -1,0 +1,42 @@
+<html>
+    <script>
+
+        // functoinal programming use everything as function 
+
+
+        // Pure function 
+            // no side effect 
+
+            // immutable 
+        // pure vs impure 
+
+        // Side effects in functional programming 
+        // In the functional programming book the author mentioned the folowing are side effects 
+
+        // 1. Modifying a variable 
+        // 2. Modifying a data structure in place 
+        // 3. Setting a field on an Object
+        // 4. Throwing an exception or halting with an error 
+        // 5. Printing to the console or reading user input 
+        // 6. Reading from or writing to a File
+        // 7. Drawing on the screen 
+
+
+        let a = 1
+        function add(obj){
+            return a++ // impure => side effect
+            //fix obj data structure
+            obj.name ='John' // side effect => mutable
+        }
+
+        // not to be mutable and not destroying the original structure 
+        // return new one is pure and immutable
+        function updateadd(obj){
+            return {
+                ...obj,
+                name : 'John'
+            }
+        }
+
+    </script>
+</html>

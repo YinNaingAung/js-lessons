@@ -1,0 +1,52 @@
+<html>
+    <script>
+        // give out new array 
+        let arr = [1,2,3,4];
+        let newarr = [];
+       arr.forEach(item => {
+        let value = item * 2;
+        newarr.push(value)
+       })
+       console.log(newarr);
+
+    //    code logic  shorthand way good practice  pragmatics
+       let arr2 = arr.map(i => {
+        console.log(i)
+       return i * 2
+    })
+       console.log('arr2', arr2)
+
+    //    filter 
+    let arr3 = [2,3,4,5]
+    
+    let newarr3 = []
+    for(let items of arr3){
+        if(items%2 === 0){
+            newarr3.push(items)
+        }
+    }
+    console.log('newarr3', newarr3)
+
+    //shorthand
+    let fil = arr3.filter(i=> {
+        return i%2 === 1 // return that does not divide modules 0
+    })
+    console.log('fil',fil)
+
+    let element = arr3.find(i => i % 3 == 0)
+    console.log('element', element) //3 find matching element
+
+    let elementindex = arr3.findIndex(i => i === 3)
+    console.log('elementIndex', elementindex) //1 find matching element index number
+
+    //  no matching is found find returns 'undefined'
+    //  and findIndex returns '-1'
+     
+    let element1 = arr3.find(i => i < 0 )
+    console.log('element1', element1); // undefined
+
+    let elementindex1 = arr3.findIndex(i => i ===1)
+    console.log('elementindex1', elementindex1) // -1 
+
+    </script>
+</html>

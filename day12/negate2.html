@@ -1,0 +1,23 @@
+<html>
+    <script>
+       let arr = [1,2,3,4,5]
+       const isEven = arr=>arr%2 === 0  // !=
+
+       const evenList = arr.filter(isEven)
+       console.log('eventList',evenList)
+
+    // Predicate function
+    //  isEven is predicate function that accept input and return boolean 
+        
+    function not(fn){
+        // ...args => accept any parameter arguments
+        return function(...args){ 
+            return !fn(...args)
+        }
+    }
+    const isOdd = not(isEven) 
+    const OddList = arr.filter(isOdd)
+    console.log("oddlist", OddList)
+        
+    </script>
+</html>
