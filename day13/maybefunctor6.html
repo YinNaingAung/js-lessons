@@ -1,0 +1,47 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script> 
+    <script>
+        
+        let container = (value) => (
+            {
+            valueOf: ()=> value,
+            map : (fn)=> container(fn(value))
+        }
+    )
+        container.of = container;
+        function appendHi(str){
+            return str + "world"
+        }
+        function toUpper(str){
+            return str.toUpperCase();
+        }
+        const result = R.pipe(appendHi,toUpper)
+        console.log('result', result('hello')) // if we give null or undefined 
+                                            // it will return undefined world 
+                                            // R.pipe(toUpper,appendHi)=>result(undefined) =>the result will be error 
+                                            //problem?
+        // when we want to handle invaild input 
+        let Maybe = (value) => ({
+            valueOf :()=> value,
+            isEmpty(){
+                return value === null || value === undefined
+            },
+            map(fn){
+                return this.isEmpty()? Maybe.of(null): Maybe.of(fn(value))
+            }
+        })
+        Maybe.of = Maybe;
+
+        function appendHi(str){
+            return str + 'world'
+        }
+        function toUpper(str){
+            return str.toUpperCase()
+        }
+        let data = Maybe.of(null)
+                        .map(toUpper)
+                        .map(appendHi)
+        console.log('data', data.valueOf())
+        
+    </script>                   
+</html>

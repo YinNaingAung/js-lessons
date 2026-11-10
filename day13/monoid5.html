@@ -1,0 +1,29 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+
+    <script>
+        let plus = {
+            identity : ()=> 0,
+            binaryOp : (a,b) => a + b 
+        }
+
+        let Multi = {
+            identity : () => 1,
+            binaryOp : (a,b) => a * b
+        }
+
+        let Min = {
+            identity : ()=> Infinity,
+            binaryOp : (a,b) => Math.min(a,b)
+        }
+
+        function fold(monoid, arr){
+            return arr.reduce(monoid.binaryOp, monoid.identity())
+        }
+        let arr = [1,2,3,-1]
+        console.log('plus', fold(plus, arr))
+        console.log('Multi', fold(Multi, arr))
+        console.log('Min', fold(Min, arr))
+
+    </script>
+</html>

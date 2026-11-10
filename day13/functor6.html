@@ -1,0 +1,39 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+
+    <script>
+        // algebraic data structure functor 
+        // functor should be monoid and
+        // if it has map we can call functor
+        // functor is an algebraic structure => mapping between categories
+
+        // why do we need functor 
+        let count = 1   ;
+        count ++;
+        console.log('count', count)// side effect 
+        // this does not make sense for functional programming 
+
+        let container = (value) => ({
+            valueOf: ()=> value,
+            map : (fn)=> container(fn(value))
+        })
+        container.of = container;
+        const inc = (x) => x+1;
+        const double = (x)=> x+2;
+        let c1 = container.of(1)
+        console.log('c1',c1.valueOf())  
+        let c2 = c1.map(inc);
+        console.log('c2',c2.valueOf())
+        let c3 = c1.map(inc).map(double)
+        console.log('c3',c3.valueOf())
+        //curry 
+        let c4 = c1.map(R.pipe(inc,double))
+        console.log('c4',c4.valueOf())
+
+        //composition rule
+
+
+        // functor and monoid is generic concept. it is no useful by itself
+        // we can support immutable because it has map
+    </script>
+</html>

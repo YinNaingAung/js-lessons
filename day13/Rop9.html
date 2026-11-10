@@ -1,0 +1,62 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+
+    <script>
+
+        // Railway oriented programming 
+
+        function div(a,b){
+            if(b==0){
+                throw new Error ('Cannot divide by zero') // impure
+            }else{
+                return a/b
+            }
+            
+        }
+
+        // In functional programming how to solve error handling without using try and catch 
+        // we have to use either  
+
+        // left => failure 
+        // right => success 
+
+        function div2(a,b){
+            if(b==0){
+                return left.of('cannot divide by zero')
+            }else{
+                return right.of(a/b)
+            }
+        }
+         let left = (value) => ({
+            valueOf :()=> value,
+            isLeft(){
+                return true; // cneck error? 
+            },
+            map(fn){
+                return this
+            }
+        })
+        left.of = left;
+
+        let right = (value) => ({
+            valueOf : ()=> value,
+            isLeft()
+            {
+                return false;
+            },
+            map(fn)
+            {
+                return right.of(fn(value))
+            }
+
+        })
+        right.of = right;
+        div2(1,0)
+            .map(x=> x+1)
+            .map(console.log)
+        div2(12,2)
+            .map(x=> x+1)
+            .map(console.log)
+
+    </script>
+</html>

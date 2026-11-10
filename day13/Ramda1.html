@@ -1,0 +1,32 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+    <script>
+        // add     Math 
+        // Number → Number → Number
+
+       console.log('R.add', R.add(2, 3));       //=>  5
+        console.log('R.add1',R.add(7)(10));      //=> 17
+        console.log('R.add1',R.add(7));
+
+        // clone object => update object
+        // Assoc 
+        let obj = {
+            name: 'John'
+        }
+        let newobj = R.assoc('age',20,obj)
+        console.log('newobj', newobj)
+
+        // AssocPath
+       /* newobj.address.city = 'YGN'
+        console.log('newobj', newobj) // return error
+        */
+
+        let newobj2 = R.assocPath(['address','city'],'YGN',newobj)
+        console.log('newobj2', newobj2) 
+
+        //CountBy   
+        const letters = ['a', 'b', 'A', 'a', 'B', 'c'];
+        console.log('R.countBy', R.countBy(R.toLower)(letters));//{a: 3, b: 2, c: 1}
+
+    </script>
+</html>

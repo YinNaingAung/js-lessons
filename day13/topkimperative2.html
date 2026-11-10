@@ -1,0 +1,66 @@
+<html>
+    <script>
+    //    let nums = [1,1,1,2,2,3], k = 2
+        // the most frequent element in the array is 1 and 2, so the output is [1,2]
+        // top k frequent
+        // let order = [2,2,2,2,4,4,4,3,3,1], k = 3
+        // [2,3,4]
+
+        //imperative way
+        /* count
+            sort by frequency
+            take top k 
+            */
+
+            // group 
+            /*{
+                 '1': 1,
+                 '2' : 4,
+                 '3' : 2,
+                 '4' : 3,
+            }*/
+
+           /* let group = []
+
+            for (let index = 0; index < order.length; index++) {
+                console.log(order[index ])
+                if(order[index] == 1){
+                    group.push({
+                        "1": order[index]
+                    })
+                }
+            }
+            console.log(group)
+ */
+        let order = [2,2,2,2,4,4,4,3,3,1], k = 3
+
+        //impertive way
+            let subgroup = {}
+            for(const item of order){
+                console.log(item)   
+                if(subgroup[item]){
+                    subgroup[item]++
+                }else{
+                    subgroup[item] =1 
+                }
+            }
+            console.log('subgroup', subgroup)
+            let arr = Object.entries(subgroup) // when we want to change object to array, use Object.entries method
+            console.log('arr', arr) // ["2", 4] => index number of "2" is 0 and 4 index number  is 1
+            console.log('arr', arr[3][0], arr[3][1])
+
+            arr.sort((a,b)=> b[1]-a[1])
+            console.log('arr', arr)
+
+            arr = arr.map((item)=> item[0])
+            console.log('arr', arr)
+
+            arr.length = k
+            console.log('arr', arr) 
+
+            // That is top k inperative code.
+        // inperative way end
+
+            
+    </script>
+</html>

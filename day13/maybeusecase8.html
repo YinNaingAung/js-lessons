@@ -1,0 +1,63 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script> 
+
+    <script>
+         let Maybe = (value) => ({
+            valueOf :()=> value,
+            isEmpty(){
+                return value === null || value === undefined
+            },
+            map(fn){
+                return this.isEmpty()? Maybe.of(null): Maybe.of(fn(value))
+            },
+            orElse(defaultvalue){
+                return thi.isEmpty()? Maybe.of(defaultvalue): this;
+            }
+        })
+        Maybe.of = Maybe;
+
+        let employees = {
+            1:{
+                name: "John"
+            },
+            2:{
+                name: "Smith",
+                supervisor : 1
+            },
+            3:{
+                name: "Will",
+                supervisor : 2  
+            }
+        }
+        console.log('employees',employees)
+        function getSupervisor(empId){
+            let emp = employees[empId];
+            if(emp){
+                let supervisorId = emp.supervisor;
+                if(supervisorId){
+                    let supervisor = employees[supervisorId]
+                    if(supervisor){
+                        return supervisor.name
+                    }
+                }
+            }
+        }
+        console.log('getSupervisor 1', getSupervisor(1)) // undefined
+        console.log('getSupervisor 2', getSupervisor(2)) // John
+        console.log('getSupervisor 3', getSupervisor(3)) // Smith
+        console.log('getSupervisor 4', getSupervisor(4)) // undefined
+
+        function getSupervisor2(empId){
+            return Maybe.of(empId)
+                            .map(empId => employees[empId])
+                            .map(employee => employee.supervisor)
+                            .map(supervisorId => employees[supervisorId])
+                            .map(supervisor => supervisor.name)
+        }       
+
+        console.log('getSupervisor2 1', getSupervisor2(1).valueOf())
+        console.log('getSupervisor2 2', getSupervisor2(2).valueOf())
+        console.log('getSupervisor2 3', getSupervisor2(3).valueOf())
+        console.log('getSupervisor2 4', getSupervisor2(4).valueOf())
+    </script>
+</html>

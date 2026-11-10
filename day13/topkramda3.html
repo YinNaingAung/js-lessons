@@ -1,0 +1,41 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+
+    <script>
+        // Ramda
+            let order = [2,2,2,2,4,4,4,3,3,1], k = 3
+
+
+            let subgroup = R.countBy(R.identity)(order) // ask why identity in here
+                                                          // countBy accepts a function
+                                                    // identity works for not to change (format) the value of nums and use os nums array
+            console.log('R.count', subgroup) // 
+
+            let arr = R.toPairs(subgroup)
+            console.log('arr', arr) // change obj to array
+
+             let sortedArr = R.sort((a,b)=>b[1]-a[1], arr)
+            console.log('sortedQrr', sortedArr)
+
+            sortedArr = R.map((item)=> item[0], sortedArr)
+            console.log('arr', sortedArr)
+
+            // arr.length = k 
+            // console.log('arr', arr)
+            let result = R.take(k,sortedArr)
+            console.log(' top k result', result)
+            //Ramda
+            // this is not typical functional programming code
+            // so use pipe 
+
+            let result1 = R.pipe(
+                R.countBy(R.identity), // we get object result 
+                R.toPairs,  // change obj to arry
+                R.sort((a,b)=>b[1]-a[1]), // descending to ascedning or ascending to descending
+                R.map((item)=> item[0]), // index 0 and 1 ['2',4] => [0,1]
+                R.take(k)
+            )(order)
+
+            console.log('top k result1', result1)
+    </script>
+</html>
