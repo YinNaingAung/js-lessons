@@ -1,0 +1,92 @@
+<html>
+    <script>
+        /*object 
+        {
+            name,
+            email
+        }
+        ValidateName,
+        validateEmail
+        save
+        */
+       // Return Either to solve
+
+  
+ let left = (value) => ({
+            valueOf :()=> value,
+            isLeft(){
+                return true; // cneck error? 
+            },
+            map(fn){
+                return this
+            },
+            flat(){
+                return this.valueOf()
+            },
+            flatMap(fn){
+                return this.map(fn).flat()
+            },
+            matchWith({left,right}){
+                return left(value)
+            }
+        })
+        left.of = left;
+
+        let right = (value) => ({
+            valueOf : ()=> value,
+            isLeft()
+            {
+                return false;
+            },
+            map(fn)
+            {
+                return right.of(fn(value))
+            },
+            flat(){
+                return this.valueOf()
+            },
+            flatMap(fn){
+                return this.map(fn).flat()
+            },
+            matchWith({left,right}){
+                return right(value)
+            }
+        })
+        right.of = right;
+       
+        let Monad = (value)=> ({
+            valueOf : ()=> value,
+            map : (fn)=> Monad(fn(value)),
+            ap : (another)=> Monad(value(another.valueOf()))
+        })
+        Monad.of = Monad
+
+        function validateName(obj){
+            if(obj.name === ""){
+                return left.of('Name cannot be empty')
+            }else{
+                return right.of(obj)
+            }
+        }
+        function validateEmail(obj){
+            if(obj.email.includes('@') === false){
+                return left.of('Invalid email')
+            }else{
+                return right.of(obj)
+            }
+        }
+
+        let user = {
+            name : 'John',
+            email : 'yy@..com'
+        }
+        right.of(user)
+            .flatMap(validateName) // either (right.of(user))
+            .flatMap(validateEmail)     //use flatMap when a function is a monative function or functor that has flatMap is monad
+            .matchWith({
+                left:(err) => (console.log('error', err)),
+                right:  (result) => console.log('success', result)
+            })
+
+    </script>
+</html>

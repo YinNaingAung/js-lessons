@@ -1,0 +1,130 @@
+<html>
+    <script>
+let left = (value) => ({
+            valueOf :()=> value,
+            isLeft(){
+                return true; // cneck error? 
+            },
+            map(fn){
+                return this
+            },
+            flat(){
+                return this.valueOf()
+            },
+            flatMap(fn){
+                return this.map(fn).flat()
+            },
+            matchWith({left,right}){
+                return left(value)
+            },
+            and(another)
+            {
+                console.log('left and', another)
+                return  another.isLeft()?left.of([value,another.valueOf()]) : this;
+            }
+        })
+        left.of = left;
+
+ let right = (value) => ({
+            valueOf : ()=> value,
+            isLeft()
+            {
+                return false;
+            },
+            map(fn)
+            {
+                return right.of(fn(value))
+            },
+            flat(){
+                return this.valueOf()
+            },
+            flatMap(fn){
+                return this.map(fn).flat()
+            },
+            matchWith({left,right}){
+                return right(value)
+            },
+             and(another)
+            {
+                console.log('right and', another)
+                return  another.isLeft()?another: this;
+            }
+        })
+        right.of = right;
+       
+        // accept input => return boolean
+        // erromessage, fn => either
+
+        // write every function that have erro message or use common function
+
+    const isNotEmpty = (str) => str.length > 0
+    const minLength = (length) => (str) => str.length >= length
+    const maXLength = (length) => (str) => str.length <= length
+    const validEmail = (str) => str.includes('@')
+    
+    //use HOF
+    function enchanced(message,fn){
+        return function(input){
+            return fn(input)? right.of(input):left.of(message)
+        }
+    }
+
+    let isNotEmpty1 = enchanced('should not be empty', isNotEmpty)
+    let minLength1 = enchanced('should be at least two characters', minLength(2))
+    let maXLength1 = enchanced('should be at most five characters',maXLength(5))
+    let validEmail1 = enchanced('should be a valid email', validEmail)
+    
+    // for name condition 
+    let isNameNotEmpty = (obj) => isNotEmpty1(obj.name) //message function 
+    let nameMinLength = (obj) => minLength1(obj.name) //message function
+    let nameMaxLength= (obj) => maXLength1(obj.name)
+    
+    //for email condition
+    
+
+    // for combinator use and ,or  
+
+   /* left 
+        and(another)
+    right
+        and(another)
+        */
+
+
+     function and(...validationFns){
+        return function(input){
+            return validationFns.reduce((result,fn)=> result.and(fn(input)), right.of(input))
+        }
+    }
+
+    // function or(...validationFns){
+    //     return function(input) {
+    //         return validationFns.reduce((result,fn)=> result || fn(input), false )
+    //     }
+    // }
+    /*
+    isNotEmpty1(obj.name)
+        .matchWith({
+            left :(err)=> console.log('validation err',err),
+            right:(result)=> console.log('success', result)
+            
+        })
+
+    minLength1(obj.name)
+        .matchWith({
+            left :(err) => console.log('validation err', err),
+            right:(result)=> console.log('success', result)
+        })
+            */
+        let obj = {
+                name:'yin',
+                email : 'yy@.com'
+            }
+        let validation1 = and(isNameNotEmpty,nameMinLength);
+        validation1(obj)
+            .matchWith({
+                left:(err) => console.log('validation err',err),
+                right:(result) => console.log('success', result)
+            })
+    </script>
+</html>

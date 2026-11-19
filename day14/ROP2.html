@@ -1,0 +1,62 @@
+<html>
+    <script>
+
+       /*try{
+            result = div(10,2)
+       }
+       catch(Err){
+            result = 1
+       }    
+       result + 10
+        */
+    //    try like this code  
+
+        function div2(a,b){
+            if(b==0){
+                return left.of('cannot divide by zero')
+            }else{
+                return right.of(a/b)
+            }
+        }
+         let left = (value) => ({
+            valueOf :()=> value,
+            isLeft(){
+                return true; // cneck error? 
+            },
+            map(fn){
+                return this
+            },
+            matchWith({left,right}){
+                return left(value)
+            }
+        })
+        left.of = left;
+
+        let right = (value) => ({
+            valueOf : ()=> value,
+            isLeft()
+            {
+                return false;
+            },
+            map(fn)
+            {
+                return right.of(fn(value))
+            },
+            matchWith({left,right}){
+                return right(value)
+            }
+        })
+        right.of = right;
+       
+        div2(12,2)
+            .matchWith({
+                left : (err) => right.of(1),
+                right : (value) => right.of(value)
+            })
+            .map(x => x+10)
+            .matchWith({
+                left : (err) => console.log('err',err),
+                right : (result)=> console.log("success",result)
+            })
+    </script>
+</html>

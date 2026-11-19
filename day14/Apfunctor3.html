@@ -1,0 +1,26 @@
+<html>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+
+    <!-- Applicative functor  -->
+     <!-- use case  when function is inside Container  -->
+    <script>
+        let Container = (value)=> ({
+            valueOf : ()=> value,
+            map : (fn)=> Container(fn(value)),
+            ap : (another)=> Container(value(another.valueOf()))
+        })
+        Container.of = Container
+        let c1 = Container.of(1) // Box(1)
+        let c2 = c1.map(R.add) // Box(1).map(R.add)
+        let c3 = Container.of(4)
+        let c4 = c2.map(c3)
+        /*
+             c2 =Container.of(R.add(1))
+             c2 = Container.of(function(x){
+                return x+1
+             })
+        */
+
+        console.log('c4', c4.valueOf())
+    </script>
+</html>

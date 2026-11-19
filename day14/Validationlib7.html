@@ -1,0 +1,41 @@
+<html>
+    <script>
+
+    /*rule 
+        isEmpty
+        minLength
+        maxLength
+        validEmail
+*/
+// combile that rule with And , Or 
+/*or(minLength(3), maxLength(5))
+    to combine => use monad
+*/
+
+    // 1.empty 
+    const isEmpty = (str) => str.length > 0
+    console.log('isEmpty', isEmpty(''))
+    console.log('isEmpty',isEmpty('ab'))
+
+    const minLength = (length) => (str) => str.length >= length
+    console.log('minLength', minLength(2)('hel'))
+
+    const maXLength = (length) => (str) => str.length <= length
+    console.log('maxLength', maXLength(3)('helloone'))
+
+    
+
+    function maxLength(x){
+        return function(y){
+            return y.length >=x
+        }
+    }
+    newMax = maxLength(2)
+    console.log('newMax', newMax('h')) //note=> the main input value will have to be in the last 
+
+    const validEmail = (str) => str.includes('@')
+    console.log('validEmail', validEmail(''))
+    console.log('ValidEmail', validEmail('yy@.com'))
+
+    </script>
+</html>
