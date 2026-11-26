@@ -1,0 +1,20 @@
+<html>
+    <script>
+        console.log('Math.min(1,2)', Math.min(1,2))
+
+        class MyMath{
+           static min(a,b){
+                console.log('this', this)
+                return a<b ? a: b 
+            }
+        }
+        console.log('MyMath.min', MyMath.min(1,2))
+        // Notice if we use static keyword we dont need to create obj (new), we can call directly
+        // static mathod vs instance method 
+        // instance method (obj) => get total(), toString()
+        //static => class own static
+
+        // getter => compute property like total()
+        // setter => validation
+    </script>
+</html>

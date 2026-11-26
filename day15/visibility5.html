@@ -1,0 +1,25 @@
+<html>
+    <script>
+        
+        class Item{
+            #name
+            constructor(name,price,quantity){
+                this.#name = name,
+                this.price = price,
+                this.quantity = quantity
+            }
+        }
+        let item = new Item('apple', 10,2)
+        console.log(item.name)
+        item.name = 'book'
+        console.log(item.name)
+        // public 
+        // if we use # keyword that would be private field
+        // item.#name ='orange '=> cannot call outside item class , can only call inside item class 
+
+        Item.prototype.display = function(){
+            return `${this.name} ${this.price} x ${this.quantity} = ${this.price*this.quantity}`
+        }
+        console.log(item.display())
+    </script>
+</html>

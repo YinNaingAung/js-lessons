@@ -1,0 +1,31 @@
+<html>
+    <script>
+        console.log('one')
+        class Item {
+            constructor(name,price,quantity){
+                this.name = name,
+                this.price = price
+                this.quantity = quantity
+                console.log('Constructor')
+            }
+             get total(){ // getter     
+                return this.price * this.quantity
+            }
+            toString(){
+                return `${this.name} ${this.price} x ${this.quantity} = ${this.total}`
+            }
+        }
+
+        let book = new Item('Book',10,5)
+        console.log('book', book)
+        console.log('book instanceof Item',book instanceof Item) // true
+        console.log('book instanceof object', book instanceof Object)// true
+        console.log('book instanceof Date', book instanceof Date)// false
+        console.log(book.toString())
+
+        console.log('two')
+
+        let fruit = new Item('Orange',10,5)
+        console.log(fruit.toString())
+    </script>
+</html>

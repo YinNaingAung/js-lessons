@@ -1,0 +1,25 @@
+<html>
+    <script>
+        class info{
+            constructor(name,age,job){
+                this.name = name,
+                this.age = age,
+                this.job = job
+            }
+            work(){
+                return `${this.name} is a ${this.job}`
+            }
+        }
+        class people extends info {
+            constructor(name,age,job,location){
+                super(name,age,job),
+                this.location = location
+            }
+            place(){
+                return `${this.name} lives in ${this.location}`
+            }
+        }
+        let person1 = new people('yinnaingaung ',24,'frontend developer',"Yangon")
+        console.log('person1.work', person1.work())
+    </script>
+</html>

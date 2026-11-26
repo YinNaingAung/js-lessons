@@ -1,0 +1,45 @@
+<html>
+    <script>
+        class TwoD {
+            constructor(x,y){
+                this.x  = x;
+                this.y = y
+            }
+            show(){
+                console.log(`x ${this.x} and y ${this.y}`)
+                return `x ${this.x} and y ${this.y}`
+            }
+        }
+        
+
+        class ThreeD extends TwoD{
+            constructor(x,y,z){
+                super(x,y); // call parent constructor value
+                this.z = z;
+                console.log('ThreeD constructor')
+            }
+            // show(){
+            //     return `x ${this.x} y ${this.y}, z ${this.z}`
+            // }
+            show() {
+                super.show()
+                console.log(`z ${this.z}`) 
+                return `z ${this.z}`
+            }
+        }
+
+        let one = new TwoD(3,4);
+        console.log('one', one.show())
+
+        let three = new ThreeD(5,3,4)
+        console.log('three.show()', three.show())
+
+
+        console.log('three instanceOf TwoD',three instanceof TwoD)
+        console.log('three instanceof ThreeD', three instanceof ThreeD)
+        console.log('three instanceof Object', three instanceof Object)
+
+        // parent => super class
+        // child => sub class 
+    </script>
+</html>

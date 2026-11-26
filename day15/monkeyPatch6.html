@@ -1,0 +1,25 @@
+<html>
+    <script>
+        let str = 'hello'
+        String.prototype.contains = function(substring){
+            console.log('substring', substring)
+            return this.includes(substring)
+        }
+        console.log('str', str.contains('hell'))
+
+        class Student{
+            static id = 0; // c
+            constructor(name){
+                this.name = name;
+                this.uniqueId = ++Student.id; 
+            }
+        }
+        let stu1 = new Student('yin')
+        console.log('stu1', stu1)
+        let stu2 = new Student('naing')
+        console.log('stu2', stu2)
+        console.log(Student.id)
+
+        
+    </script>
+</html>

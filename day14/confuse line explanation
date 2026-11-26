@@ -1,0 +1,47 @@
+
+/*function and(...validationFns){
+        return function(input){
+            return validationFns.reduce((result,fn)=> result.and(fn(input)), right.of(input))
+        }
+    }
+I still confused in herer right.of(input) 's value is?
+
+In that line, right.of(input) creates a right container object whose internal value is input (the entire obj you are validating).
+
+What right.of(input) Actually Produces
+
+Because right.of is just an alias for right, calling right.of(input) creates this exact object:
+javascript
+{
+  valueOf: () => input, // holds { name: 'yin', email: 'yy@.com' }
+  isLeft: () => false,
+  map: (fn) => ...,
+  flat: () => ...,
+  flatMap: (fn) => ...,
+  matchWith: ({left, right}) => ...,
+  and: (another) => ...
+}
+Use code with caution.
+
+Why It Is Needed in .reduce()
+
+The .reduce() method needs a starting value (the initial result) before it loops through your validation functions.
+• The value inside it: It holds your original input ({ name: 'yin', email: 'yy@.com' }). If all validations pass, this exact right(input) container survives all the way to the end so .matchWith({ right: (result) => ... }) receives the original object.
+• The .and() method on it: On the very first loop of .reduce(), result is right.of(input). Because it is a right container object, it has the .and() method ready to run result.and(fn(input)). Without wrapping input in right.of(...) first, input would just be a plain object ({ name: 'yin' }), and calling input.and(...) would crash with a TypeError: input.and is not a function.
+
+How result Changes Through Each Loop
+
+When you call validation1(obj) where obj = { name: 'yin', email: 'yy@.com' }:
+1. Before Loop 1 (Initial Value):
+result = right({ name: 'yin', email: 'yy@.com' })
+2. Loop 1 (fn is isNameNotEmpty):
+	• fn(input) runs isNameNotEmpty(obj), which returns right('yin').
+	• result.and(right('yin')) runs on the right container.
+	• Inside right.and: another.isLeft() is false, so it returns this — which is still right({ name: 'yin', email: 'yy@.com' }).
+3. Loop 2 (fn is nameMinLength):
+	• fn(input) runs nameMinLength(obj), which returns right('yin').
+	• result.and(right('yin')) runs again, sees no error, and returns this (right({ name: 'yin', email: 'yy@.com' })).
+Notice that fn(input) returns right('yin') (just the name string), not the full object. Because right.and returns this when there is no error, the original right(obj) from right.of(input) is preserved as the final success result!
+Does that clarify how right.of(input) acts as the starting container? If you'd like, we can trace what happens inside right.and(another) when another is a left error instead.
+*/
+

@@ -1,0 +1,53 @@
+<html>
+    <script>
+
+        let item = {
+            name:'Iphone',
+            price : 10,
+            quantity : 2,
+            get total(){
+                return this.price * this.quantity
+            },
+            toString(){
+                return `${this.name} ${this.price} x ${this.quantity} = ${this.total}`
+            }
+        }
+        console.log(item.toString())
+
+        let fruit = {
+            name : 'Apple',
+            price : 10,
+            quantity : 5,
+            get total(){
+                return this.price * this.quantity
+            },
+            toString(){
+                return `${this.name} ${this.price} x ${this.quantity} = ${this.total}`
+            }
+        }
+        console.log(fruit.toString())
+
+        function itemname(name,price,quantity){
+                return {
+            name ,
+            price,
+            quantity,
+            get total(){
+                return this.price * this.quantity
+            },
+            toString(){
+                return `${this.name} ${this.price} x ${this.quantity} = ${this.total}`
+            }
+        }
+        }
+
+        let book = itemname('To Successful Goal',10,5)
+        console.log(book.toString())
+        let vegetable = itemname('Mangoes', 10,5)
+        console.log(vegetable.toString())
+        // one time usage => object literal
+
+        //many object + method => class
+
+    </script>
+</html>

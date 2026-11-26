@@ -1,0 +1,77 @@
+This code implements a functional programming validation system using the Either Monad pattern (often called Railway Oriented Programming). Instead of throwing errors or returning simple booleans, it wraps data in either a left container (representing failure/error messages) or a right container (representing success/valid data), allowing multiple validation rules to be combined cleanly.
+
+1. The left Container (Failure / Error Track)
+
+The left factory function creates an object that holds an error message. Once data enters a left container, normal transformations skip over it, preserving the error.
+• let left = (value) => ({ ... }): A function that takes an error value (like a string message) and returns an object wrapping that value.
+• valueOf: () => value: Unwraps and returns the raw error value stored inside.
+• isLeft() { return true; }: A helper flag confirming this container represents an error state.
+• map(fn) { return this }: Ignores the transformation function fn and returns itself unchanged. Once an error occurs, you do not want to keep transforming the bad data.
+• flat() { return this.valueOf() }: Extracts the inner value (used to prevent nested containers like left(left(x))).
+• flatMap(fn) { return this.map(fn).flat() }: Maps and flattens in one step. Because map ignores fn, this simply unwraps the error.
+• matchWith({left, right}) { return left(value) }: Pattern-matching method. Since this is a left container, it executes the left callback function and passes the error value to it.
+• and(another) { ... }: Combines this error with another validation result (another). If another is also a left (error), it merges both error messages into an array: left.of([value, another.valueOf()]). If another succeeded (right), it keeps this existing error.
+• left.of = left: Adds a static-style .of() constructor method for consistency with functional programming conventions.
+
+2. The right Container (Success / Valid Track)
+
+The right factory function creates an object holding valid data.
+• let right = (value) => ({ ... }): Takes a valid value and wraps it in a success container.
+• valueOf: () => value: Returns the underlying valid value.
+• isLeft() { return false; }: Confirms this container is not an error.
+• map(fn) { return right.of(fn(value)) }: Applies the function fn to the valid value and wraps the result in a new right container.
+• flat() & flatMap(fn): Same structure as left, except map(fn) actually runs fn(value) before flattening.
+• matchWith({left, right}) { return right(value) }: Executes the right callback function and passes the valid value to it.
+• and(another) { ... }: Since this validation succeeded, the combined result depends entirely on another. If another failed (another.isLeft()), it switches to that left error; otherwise, it stays this (right).
+• right.of = right: Attaches the .of() helper method.
+
+3. Basic Validation Rules (Predicates)
+
+These are pure functions that take a string and return a simple true or false.
+• const isNotEmpty = (str) => str.length > 0: Returns true if the string has at least 1 character.
+• const minLength = (length) => (str) => str.length >= length: A curried function. You pass the minimum length first, and it returns a new function waiting for str.
+• const maXLength = (length) => (str) => str.length <= length: Curried function checking if str does not exceed length.
+• const validEmail = (str) => str.includes('@'): Checks if the string contains an @ symbol.
+
+4. Upgrading Rules with a Higher-Order Function (enchanced)
+
+Boolean true/false values don't explain why something failed. enchanced upgrades boolean rules into left/right containers.
+• function enchanced(message, fn): Takes an error message and a boolean rule fn.
+• return function(input): Returns a new validator function.
+• return fn(input) ? right.of(input) : left.of(message): Runs fn(input). If true, it returns the input wrapped in right. If false, it returns the error message wrapped in left.
+• isNotEmpty1, minLength1, maXLength1, validEmail1: These four lines create ready-to-use validators paired with human-readable error messages.
+
+5. Object Property Extractors
+
+The validators above expect strings, so these wrapper functions extract specific properties from a user object (obj).
+• let isNameNotEmpty = (obj) => isNotEmpty1(obj.name): Extracts obj.name and passes it to isNotEmpty1.
+• let nameMinLength = (obj) => minLength1(obj.name): Extracts obj.name and checks if it has at least 2 characters.
+• let nameMaxLength = (obj) => maXLength1(obj.name): Extracts obj.name and checks if it has at most 5 characters.
+
+6. The and Combinator
+
+This function allows you to group multiple validation rules together so they all run against the same input.
+• function and(...validationFns): Uses rest parameters (...) to accept any number of validator functions as an array.
+• return function(input): Returns a single combined validator function that accepts input (in this case, obj).
+• validationFns.reduce((result, fn) => result.and(fn(input)), right.of(input)):
+	1. Starts with an initial accumulator of right.of(input) (assuming the input is valid until proven otherwise).
+	2. Loops through each validator fn in validationFns.
+	3. Calls fn(input) to get a left or right, and chains it to the previous result using .and(...).
+
+7. Execution & How Everything Connects
+
+Here is the exact step-by-step flow when the bottom lines run:
+1. Data Creation: let obj = { name: 'yin', email: 'yy@.com' } defines the object to validate.
+2. Rule Composition: let validation1 = and(isNameNotEmpty, nameMinLength); bundles two checks into one function.
+3. Running Validation: validation1(obj) runs the reduce loop:
+	• Initial State: result starts as right(obj).
+	• Step 1 (isNameNotEmpty): Checks 'yin'.length > 0 → true → returns right('yin'). Then right(obj).and(right('yin')) runs. Because right('yin') is not a left, it returns right(obj).
+	• Step 2 (nameMinLength): Checks 'yin'.length >= 2 → true → returns right('yin'). Then right(obj).and(right('yin')) runs and returns right(obj).
+4. Handling the Final Output: .matchWith({ left: ..., right: ... }) inspects the final container returned by validation1(obj):
+	• Because both rules passed, the final container is right(obj).
+	• matchWith triggers the right callback and prints: success { name: 'yin', email: 'yy@.com' }.
+	• (Note: If name had been '' (empty), both isNameNotEmpty and nameMinLength would fail. left.and(left) would collect both errors and print: validation err ['should not be empty', 'should be at least two characters']).
+Would you like to see how to:
+• Implement the commented-out or combinator
+• Add the email validation rules into validation1
+• Fix a small edge case in left.and() when 3 or more errors occur
